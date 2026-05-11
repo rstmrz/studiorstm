@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Générateur sel / hash (accès portfolio)</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
+    label { display: block; margin-top: 1rem; font-weight: 600; }
+    input[type="password"] { width: 100%; max-width: 400px; padding: 0.5rem; margin-top: 0.25rem; }
+    button { margin-top: 1rem; padding: 0.5rem 1rem; cursor: pointer; }
+    textarea { width: 100%; min-height: 140px; margin-top: 0.5rem; font-family: ui-monospace, monospace; font-size: 13px; }
+    .note { color: #444; font-size: 0.9rem; margin-top: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Générateur pour js/site-access.js</h1>
+  <p>À utiliser <strong>en local</strong> : saisis le mot de passe que tu veux pour le site, puis copie le résultat dans <code>js/site-access.js</code> (remplace <code>SALT_HEX</code> et <code>EXPECTED_HASH_HEX</code>).</p>
+
+  <label for="pwd">Mot de passe</label>
+  <input type="password" id="pwd" autocomplete="off" />
+
+  <button type="button" id="go">Générer sel + hash</button>
+
+  <label for="out">À coller dans site-access.js</label>
+  <textarea id="out" readonly placeholder="Clique sur « Générer »…"></textarea>
+
+  <p class="note">Paramètres : PBKDF2-SHA256, 310&nbsp;000 itérations, sel aléatoire 16 octets (identique à <code>site-access.js</code>). Ne déploie pas ce fichier sur la prod si tu préfères le garder uniquement sur ta machine.</p>
+
+  <script>
+    (function () {
+      var ITER = 310000;
+
+      function bytesToHex(u8) {
+        return Array.prototype.map.call(u8, function (b) {
+          return b.toString(16).padStart(2, "0");
+        }).join("");
+      }
+
+      function randomSalt() {
+        var a = new Uint8Array(16);
+        crypto.getRandomValues(a);
+        return a;
+      }
+
+      document.getElementById("go").addEventListener("click", function () {
+        var pwd = document.getElementById("pwd").value;
+        var ta = document.getElementById("out");
+        if (!pwd) {
+          ta.value = "Saisis un mot de passe.";
+          return;
+        }
+        if (!crypto.subtle) {
+          ta.value = "Web Crypto indisponible dans ce navigateur.";
+          return;
+        }
+        var salt = randomSalt();
+        var enc = new TextEncoder();
+        crypto.subtle
+          .importKey("raw", enc.encode(pwd), "PBKDF2", false, ["deriveBits"])
+          .then(function (km) {
+            return crypto.subtle.deriveBits(
+              { name: "PBKDF2", salt: salt, iterations: ITER, hash: "SHA-256" },
+              km,
+              256
+            );
+          })
+          .then(function (bits) {
+            ta.value =
+              "var SALT_HEX = \"" + bytesToHex(salt) + "\";\n" +
+              "var EXPECTED_HASH_HEX =\n  \"" + bytesToHex(new Uint8Array(bits)) + "\";";
+          })
+          .catch(function () {
+            ta.value = "Erreur lors du calcul.";
+          });
+      });
+    })();
+  </script>
+</body>
+</html>
