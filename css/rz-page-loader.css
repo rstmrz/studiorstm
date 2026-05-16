@@ -1,0 +1,45 @@
+/**
+ * Loader entre pages (projet-*.html) : overlay noir uniquement + loader.mp4 centré.
+ * Aucun pseudo-élément, pas de bandeau bleu hérité du thème Arlo.
+ */
+#rz-page-loader.rz-page-loader {
+	position: fixed;
+	inset: 0;
+	z-index: 2147483647;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	padding: clamp(12px, 4vw, 24px);
+	box-sizing: border-box;
+	background-color: #000000;
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
+	transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#rz-page-loader.rz-page-loader.is-done {
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+}
+
+#rz-page-loader .rz-page-loader__inner {
+	width: min(180px, 42vw);
+	max-width: 200px;
+	margin: 0;
+}
+
+#rz-page-loader .rz-page-loader__video {
+	display: block;
+	width: 100%;
+	height: auto;
+	max-height: min(40vh, 240px);
+	object-fit: contain;
+}
+
+html.rz-page-loader-active,
+body.rz-page-loader-active {
+	background-color: #000000;
+}

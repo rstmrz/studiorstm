@@ -1,0 +1,72 @@
+html {
+	min-height: 100%;
+	background-color: #000000;
+}
+body {
+	margin: 0;
+	min-height: 100%;
+	background: #000000;
+}
+.arlo_tm_wrapper_all,
+.arlo_tm_content,
+.arlo_tm_rightpart,
+.arlo_tm_rightpart .rightpart_inner {
+	background-color: #000000;
+}
+#RZ_FOOTER.rz-site-footer {
+	position: relative;
+	box-sizing: border-box;
+	padding: clamp(24px, 4vw, 40px) clamp(16px, 4vw, 40px);
+	font-family: "Inter", system-ui, sans-serif;
+	color: rgba(255, 255, 255, 0.55);
+	background: #000000;
+	border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+#RZ_FOOTER .rz-footer-inner {
+	max-width: 1220px;
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px 20px;
+}
+#RZ_FOOTER .rz-footer-copy {
+	margin: 0;
+	font-size: 0.78rem;
+}
+#RZ_RECHERCH.rz-recherche-stage {
+	position: relative;
+	box-sizing: border-box;
+	padding: clamp(48px, 8vw, 96px) clamp(16px, 4vw, 40px) clamp(64px, 10vw, 120px);
+	background: #000000;
+	overflow-x: hidden;
+}
+#RZ_RECHERCH .rz-glass-shell {
+	background: transparent;
+	border: none;
+	padding: 0;
+}
+#RZ_RECHERCH .rz-block-head {
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+#RZ_RECHERCH .rz-block-title-serif,
+#RZ_RECHERCH #rz-recherche-heading {
+	margin: 0 auto;
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	font-family: "Playfair Display", Georgia, serif;
+	font-style: italic;
+	font-weight: 600;
+	font-size: clamp(4.5rem, 14vw, 11rem);
+	line-height: 0.95;
+	letter-spacing: -0.02em;
+	color: #3a444f;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

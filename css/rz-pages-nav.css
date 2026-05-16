@@ -1,0 +1,29 @@
+.rz-page-nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	display: flex;
+	justify-content: center;
+	gap: clamp(12px, 3vw, 28px);
+	padding: 14px clamp(16px, 4vw, 24px);
+	background: rgba(0, 0, 0, 0.72);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.rz-page-nav a {
+	color: rgba(255, 255, 255, 0.72);
+	text-decoration: none;
+	font-family: "Inter", system-ui, sans-serif;
+	font-size: 0.78rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	transition: color 0.2s;
+}
+.rz-page-nav a:hover { color: #fff; }
+#HERO .arlo_tm_hero_header_wrap {
+	padding-top: clamp(88px, 12svh, 110px);
+}

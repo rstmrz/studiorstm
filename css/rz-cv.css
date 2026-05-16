@@ -1,0 +1,847 @@
+/* Titres de bloc (Playfair italique, même esprit que le hero) */
+#RZ_BENTO > .rz-glass-shell > .rz-block-head {
+	text-align: center;
+	margin-bottom: clamp(14px, 2.2vw, 24px);
+}
+#RZ_BENTO .rz-block-title-serif {
+	margin: 0;
+	font-size: clamp(1.65rem, 4.2vw, 2.75rem);
+	font-weight: 600;
+	letter-spacing: -0.02em;
+	line-height: 1.12;
+	color: rgba(255, 255, 255, 0.94);
+}
+
+#RZ_BENTO.rz-glass-stage {
+	position: relative;
+	box-sizing: border-box;
+	padding: clamp(28px, 5vw, 64px) clamp(16px, 4vw, 40px) clamp(48px, 8vw, 100px);
+	font-family: "Inter", system-ui, sans-serif;
+	color: #fff;
+	background: #000000;
+	overflow-x: hidden;
+}
+#RZ_BENTO .rz-glass-shell {
+	position: relative;
+	z-index: 1;
+	max-width: 1220px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: clamp(18px, 2.5vw, 26px);
+}
+#RZ_PROJECTS .rz-glass-shell {
+	overflow: visible;
+}
+
+#RZ_BENTO .rz-glass-card,
+#RZ_PROJECTS .rz-glass-card {
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(22px);
+	-webkit-backdrop-filter: blur(22px);
+	border: 1px solid rgba(255, 255, 255, 0.22);
+	border-radius: clamp(14px, 2vw, 20px);
+	box-shadow:
+		0 4px 24px rgba(0, 0, 0, 0.18),
+		inset 0 1px 0 rgba(255, 255, 255, 0.12);
+	padding: clamp(22px, 3vw, 36px);
+	box-sizing: border-box;
+}
+
+/* Ligne 1 : fiche identité (gauche) | expériences (droite) */
+#RZ_BENTO .rz-bento-main-grid {
+	display: grid;
+	grid-template-columns: minmax(260px, 300px) 1fr;
+	gap: clamp(16px, 2.2vw, 24px);
+	align-items: stretch;
+}
+
+#RZ_BENTO .rz-card-exp {
+	grid-column: 2;
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+	padding: clamp(18px, 2.5vw, 28px);
+	/* Hauteur fixe + plus grande marge pour le bouton sous les missions */
+	height: min(720px, 78vh);
+	min-height: 620px;
+	max-height: 860px;
+}
+#RZ_BENTO .rz-tab-btn .rz-tab-role {
+	display: block;
+	font-size: 0.5rem;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.48);
+	margin-bottom: 4px;
+	line-height: 1.25;
+}
+#RZ_BENTO .rz-tab-btn.is-active .rz-tab-role {
+	color: rgba(255, 255, 255, 0.78);
+}
+#RZ_BENTO .rz-tab-btn .rz-tab-company {
+	display: block;
+	font-size: 0.58rem;
+	font-weight: 700;
+	line-height: 1.3;
+	letter-spacing: 0.03em;
+	color: rgba(200, 220, 255, 0.95);
+}
+#RZ_BENTO .rz-tab-btn.is-active .rz-tab-company {
+	color: #fff;
+}
+#RZ_BENTO .rz-tab-btn .rz-tab-dates {
+	display: block;
+	margin-top: 3px;
+	font-size: 0.58rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: none;
+	color: rgba(255, 200, 160, 0.88);
+}
+#RZ_BENTO .rz-tab-btn.is-active .rz-tab-dates {
+	color: rgba(255, 220, 190, 0.98);
+}
+
+#RZ_BENTO .rz-exp-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-bottom: 10px;
+	flex-shrink: 0;
+}
+#RZ_BENTO .rz-exp-head-title {
+	font-size: 0.95rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.72);
+}
+
+#RZ_BENTO .rz-exp-tabs {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: stretch;
+	gap: 0;
+	padding-bottom: 12px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+	flex-shrink: 0;
+}
+#RZ_BENTO .rz-exp-tabs-bridge {
+	flex: 1 1 10px;
+	min-width: 6px;
+	max-width: 28px;
+	align-self: center;
+	height: 2px;
+	border-radius: 2px;
+	background: linear-gradient(90deg, rgba(109, 135, 168, 0.2), rgba(109, 135, 168, 0.65), rgba(109, 135, 168, 0.2));
+	pointer-events: none;
+}
+#RZ_BENTO .rz-tab-btn {
+	appearance: none;
+	border: 1px solid rgba(255, 255, 255, 0.22);
+	background: rgba(255, 255, 255, 0.06);
+	color: rgba(255, 255, 255, 0.75);
+	font-family: inherit;
+	font-size: 0.72rem;
+	font-weight: 600;
+	padding: 9px 12px;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: background 0.2s, color 0.2s, border-color 0.2s;
+	flex: 1 1 0;
+	min-width: 0;
+	text-align: left;
+}
+#RZ_BENTO .rz-tab-btn:hover {
+	color: #fff;
+	border-color: rgba(255, 255, 255, 0.4);
+	background: rgba(255, 255, 255, 0.1);
+}
+#RZ_BENTO .rz-tab-btn.is-active {
+	background: #6d87a8;
+	border-color: rgba(109, 135, 168, 0.9);
+	color: #fff;
+	box-shadow: 0 4px 14px rgba(80, 110, 140, 0.35);
+}
+
+#RZ_BENTO .rz-exp-panels-wrap {
+	position: relative;
+	flex: 1;
+	min-height: 500px;
+	margin-top: 4px;
+}
+#RZ_BENTO .rz-tab-panel {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	display: none;
+	flex-direction: column;
+	overflow: hidden;
+	padding-top: 12px;
+	padding-bottom: 60px;
+	box-sizing: border-box;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+#RZ_BENTO .rz-tab-panel::-webkit-scrollbar {
+	display: none;
+	width: 0;
+	height: 0;
+}
+#RZ_BENTO .rz-tab-panel.is-active { display: flex; }
+#RZ_BENTO .rz-exp-meta {
+	font-size: 0.78rem;
+	color: rgba(255, 255, 255, 0.55);
+	margin-bottom: 6px;
+	flex-shrink: 0;
+}
+#RZ_BENTO .rz-exp-heading {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 10px;
+	margin-bottom: 12px;
+	flex-shrink: 0;
+}
+
+#RZ_BENTO .rz-exp-heading .rz-exp-role-line {
+	font-size: 0.92rem;
+	font-weight: 700;
+	color: rgba(230, 238, 255, 0.96);
+	margin: 0;
+	line-height: 1.3;
+}
+#RZ_BENTO .rz-exp-heading .rz-exp-title {
+	font-size: clamp(0.85rem, 1.35vw, 1rem);
+	font-weight: 700;
+	margin: 0;
+	line-height: 1.25;
+}
+#RZ_BENTO .rz-mini-list {
+	margin: 0;
+	padding-left: 1.15em;
+	padding-bottom: 8px;
+	font-size: 0.82rem;
+	line-height: 1.55;
+	color: rgba(255, 255, 255, 0.82);
+	flex: 1;
+	min-height: 0;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+}
+#RZ_BENTO .rz-mini-list li { margin-bottom: 6px; }
+#RZ_BENTO .rz-exp-footer {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 14px 0 6px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	flex-shrink: 0;
+	background: none;
+	pointer-events: none;
+}
+#RZ_BENTO .rz-exp-footer .rz-exp-link {
+	pointer-events: auto;
+}
+#RZ_BENTO .rz-exp-link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	padding: 10px 18px;
+	border-radius: 999px;
+	background: #6d87a8;
+	color: #fff !important;
+	-webkit-text-fill-color: #fff;
+	text-decoration: none;
+	font-size: 0.74rem;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	transition: background 0.2s, transform 0.18s, box-shadow 0.2s;
+	border: 1px solid rgba(255, 255, 255, 0.22);
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+}
+#RZ_BENTO .rz-exp-link .rz-exp-link-chev {
+	font-weight: 500;
+	opacity: 0.9;
+	transition: transform 0.2s ease;
+}
+#RZ_BENTO .rz-exp-link:hover {
+	color: #fff !important;
+	-webkit-text-fill-color: #fff;
+	background: #7a96b8;
+	transform: translateY(-1px);
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+}
+#RZ_BENTO .rz-exp-link:hover .rz-exp-link-chev {
+	transform: translateX(3px);
+}
+#RZ_BENTO .rz-sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* Fiche identité */
+#RZ_BENTO .rz-card-profile-light {
+	grid-column: 1;
+	position: relative;
+	background: rgba(245, 247, 251, 0.94);
+	backdrop-filter: blur(18px);
+	-webkit-backdrop-filter: blur(18px);
+	border: 1px solid rgba(255, 255, 255, 0.65);
+	color: #1a1f28;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	text-align: left;
+	gap: 14px;
+	padding: clamp(24px, 3vw, 36px);
+	padding-top: clamp(28px, 3.2vw, 40px);
+	height: min(720px, 78vh);
+	min-height: 620px;
+	max-height: 860px;
+	box-sizing: border-box;
+}
+#RZ_BENTO .rz-profile-li-corner {
+	position: absolute;
+	top: clamp(18px, 2.5vw, 24px);
+	right: clamp(16px, 2.5vw, 22px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	border: none;
+	background: none;
+	box-shadow: none;
+	line-height: 0;
+}
+#RZ_BENTO .rz-profile-li-corner img {
+	width: 26px;
+	height: 26px;
+	display: block;
+	object-fit: contain;
+}
+#RZ_BENTO .rz-profile-tagline {
+	margin: 0;
+	font-size: 0.82rem;
+	font-weight: 500;
+	color: #4a5568;
+	line-height: 1.45;
+	width: 100%;
+	max-width: none;
+	padding-right: 36px;
+	box-sizing: border-box;
+}
+#RZ_BENTO .rz-profile-role-pill {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 8px 14px;
+	border-radius: 0;
+	font-size: 0.68rem;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: #3d4f6f;
+	background: rgba(109, 135, 168, 0.2);
+	border: 1px solid rgba(109, 135, 168, 0.45);
+	align-self: flex-start;
+}
+#RZ_BENTO .rz-profile-stack {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	text-align: left;
+	margin-top: 2px;
+}
+#RZ_BENTO .rz-profile-stack .rz-id-line {
+	width: 100%;
+}
+#RZ_BENTO .rz-profile-avatar {
+	width: 88px;
+	height: 88px;
+	border-radius: 50%;
+	object-fit: cover;
+	border: 3px solid rgba(255, 255, 255, 0.95);
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+	flex-shrink: 0;
+	align-self: flex-start;
+}
+#RZ_BENTO .rz-profile-name {
+	margin: 0;
+	font-size: 1.25rem;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	width: 100%;
+	padding-right: 36px;
+	box-sizing: border-box;
+}
+#RZ_BENTO .rz-profile-contact {
+	width: 100%;
+	text-align: left;
+	margin-top: auto;
+	padding-top: 16px;
+	border-top: 1px solid rgba(0, 0, 0, 0.08);
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+#RZ_BENTO .rz-id-line {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+#RZ_BENTO .rz-id-label {
+	font-size: 0.62rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: #8892a3;
+}
+#RZ_BENTO .rz-id-value {
+	font-size: 0.88rem;
+	font-weight: 500;
+	color: #1a1f28;
+	word-break: break-word;
+}
+#RZ_BENTO .rz-id-value a {
+	color: #4a6fa5;
+	text-decoration: none;
+	font-weight: 600;
+}
+#RZ_BENTO .rz-id-value a:hover { text-decoration: underline; }
+
+/* Stack outils : légende + pastilles (niveau) */
+#RZ_BENTO .rz-tool-legend {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px 18px;
+	margin-bottom: 18px;
+	font-size: 0.74rem;
+	font-weight: 500;
+	color: rgba(255, 255, 255, 0.78);
+}
+#RZ_BENTO .rz-leg {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+}
+#RZ_BENTO .rz-leg-dot {
+	width: 11px;
+	height: 11px;
+	border-radius: 3px;
+	flex-shrink: 0;
+}
+#RZ_BENTO .rz-leg--auto .rz-leg-dot { background: #3b82f6; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2); }
+#RZ_BENTO .rz-leg--deep .rz-leg-dot { background: #4ade80; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2); }
+#RZ_BENTO .rz-leg--know .rz-leg-dot { background: #facc15; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2); }
+#RZ_BENTO .rz-leg--learn .rz-leg-dot { background: #fb923c; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2); }
+
+#RZ_BENTO .rz-tool-cat {
+	margin-bottom: 18px;
+}
+#RZ_BENTO .rz-tool-cat:last-child { margin-bottom: 0; }
+#RZ_BENTO .rz-tool-cat h4 {
+	margin: 0 0 12px;
+	font-size: 0.88rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.82);
+}
+#RZ_BENTO .rz-tool-grid,
+#RZ_PROJECTS .rz-tool-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+#RZ_BENTO .rz-tool-item {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 14px;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.16);
+	font-size: 0.74rem;
+	font-weight: 500;
+	color: rgba(255, 255, 255, 0.92);
+}
+#RZ_BENTO .rz-tool-item .rz-tool-icon {
+	width: 16px;
+	height: 16px;
+	object-fit: contain;
+	flex-shrink: 0;
+}
+#RZ_BENTO .rz-tool-icon.rz-tool-icon--mono {
+	filter: brightness(0) invert(1);
+}
+#RZ_BENTO .rz-tool-item--auto {
+	background: rgba(59, 130, 246, 0.14);
+	border: 1px solid rgba(59, 130, 246, 0.45);
+	color: #fff;
+}
+#RZ_BENTO .rz-tool-item--deep {
+	background: rgba(74, 222, 128, 0.12);
+	border: 1px solid rgba(74, 222, 128, 0.4);
+	color: #fff;
+}
+#RZ_BENTO .rz-tool-item--know {
+	background: rgba(250, 204, 21, 0.12);
+	border: 1px solid rgba(250, 204, 21, 0.42);
+	color: #fff;
+}
+#RZ_BENTO .rz-tool-item--learn {
+	background: rgba(251, 146, 60, 0.14);
+	border: 1px solid rgba(251, 146, 60, 0.45);
+	color: #fff;
+}
+#RZ_PROJECTS .rz-tool-item--auto {
+	background: rgba(59, 130, 246, 0.14);
+	border-color: rgba(59, 130, 246, 0.45);
+}
+#RZ_PROJECTS .rz-tool-item--deep {
+	background: rgba(74, 222, 128, 0.12);
+	border-color: rgba(74, 222, 128, 0.38);
+}
+#RZ_PROJECTS .rz-tool-item--know {
+	background: rgba(250, 204, 21, 0.12);
+	border-color: rgba(250, 204, 21, 0.4);
+}
+#RZ_PROJECTS .rz-tool-item--learn {
+	background: rgba(251, 146, 60, 0.14);
+	border-color: rgba(251, 146, 60, 0.45);
+}
+
+/* Langues : drapeau + étiquette */
+#RZ_BENTO .rz-lang-row {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+#RZ_BENTO .rz-lang-badge {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 10px 16px;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	width: 100%;
+	box-sizing: border-box;
+}
+#RZ_BENTO .rz-lang-flag {
+	flex-shrink: 0;
+	width: 36px;
+	height: 26px;
+	border-radius: 4px;
+	object-fit: cover;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+#RZ_BENTO .rz-lang-info {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 2px;
+}
+#RZ_BENTO .rz-lang-name {
+	font-size: 0.8rem;
+	font-weight: 700;
+	color: #fff;
+}
+#RZ_BENTO .rz-lang-lvl {
+	font-size: 0.72rem;
+	color: rgba(255, 255, 255, 0.65);
+	font-weight: 500;
+}
+
+/* Formations : blocs avec logo, dates, lien */
+#RZ_BENTO .rz-formations-grid {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+#RZ_BENTO .rz-formation-block {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	padding: 0;
+	border: none;
+	background: transparent;
+	color: inherit;
+}
+#RZ_BENTO .rz-formation-logo-wrap {
+	width: 52px;
+	height: 52px;
+	flex-shrink: 0;
+	border-radius: 0;
+	overflow: hidden;
+	background: #fff;
+}
+#RZ_BENTO .rz-formation-logo {
+	width: 100%;
+	height: 100%;
+	border-radius: 0;
+	object-fit: cover;
+	object-position: center;
+	padding: 0;
+	background: #fff;
+	display: block;
+}
+#RZ_BENTO .rz-formation-body {
+	flex: 1;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	font-size: 0.72rem;
+	line-height: 1.4;
+	color: rgba(255, 255, 255, 0.82);
+}
+#RZ_BENTO .rz-formation-dates {
+	font-size: 0.62rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: rgba(180, 200, 230, 0.9);
+}
+#RZ_BENTO .rz-formation-body strong {
+	font-size: 0.78rem;
+	font-weight: 700;
+	color: rgba(255, 255, 255, 0.98);
+}
+
+/* Intérêts : 4 colonnes, icône + titre */
+#RZ_BENTO .rz-interest-grid {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 12px 10px;
+	align-items: start;
+}
+#RZ_BENTO .rz-interest-cell {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	gap: 10px;
+}
+#RZ_BENTO .rz-interest-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgba(255, 255, 255, 0.95);
+	background: none;
+	border: none;
+	padding: 0;
+	border-radius: 0;
+}
+#RZ_BENTO .rz-interest-icon svg {
+	width: 48px;
+	height: 48px;
+	flex-shrink: 0;
+}
+#RZ_BENTO .rz-interest-text {
+	font-size: 0.78rem;
+	font-weight: 600;
+	line-height: 1.25;
+	color: rgba(255, 255, 255, 0.92);
+}
+
+/* Références : grille 5 profils */
+#RZ_BENTO .rz-refs-grid {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 10px;
+}
+@media (max-width: 640px) {
+	#RZ_BENTO .rz-refs-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	#RZ_BENTO .rz-ref-card:last-child:nth-child(odd) {
+		grid-column: 1;
+		justify-self: start;
+		width: 100%;
+		max-width: calc(50% - 5px);
+	}
+}
+#RZ_BENTO .rz-ref-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	gap: 10px;
+	padding: 14px 8px;
+	border-radius: 12px;
+	background: rgba(255, 255, 255, 0.07);
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	color: inherit;
+	transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+#RZ_BENTO .rz-ref-card:hover {
+	background: rgba(255, 255, 255, 0.14);
+	border-color: rgba(255, 255, 255, 0.3);
+	transform: translateY(-2px);
+}
+#RZ_BENTO .rz-ref-actions {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	margin-top: 2px;
+}
+#RZ_BENTO .rz-ref-actions a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: auto;
+	height: auto;
+	min-width: 28px;
+	min-height: 28px;
+	padding: 4px;
+	border-radius: 0;
+	border: none;
+	color: #fff;
+	transition: opacity 0.2s, transform 0.15s, filter 0.2s;
+	background: transparent;
+}
+#RZ_BENTO .rz-ref-actions a.rz-ref-li:hover {
+	background: transparent;
+	filter: brightness(1.12);
+	transform: scale(1.08);
+}
+#RZ_BENTO .rz-ref-actions a.rz-ref-mail:hover {
+	background: transparent;
+	filter: brightness(1.12);
+	transform: scale(1.08);
+}
+#RZ_BENTO .rz-ref-actions .rz-ref-icon {
+	width: 22px;
+	height: 22px;
+	object-fit: contain;
+	display: block;
+	flex-shrink: 0;
+}
+#RZ_BENTO .rz-ref-actions a.rz-ref-li .rz-ref-icon {
+	filter: brightness(0) invert(1);
+}
+#RZ_BENTO .rz-ref-actions a.rz-ref-mail .rz-ref-icon {
+	width: 22px;
+	height: 22px;
+}
+#RZ_BENTO .rz-ref-avatar {
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	background: linear-gradient(135deg, #6d87a8, #4a5f78);
+	color: #fff;
+	font-size: 0.72rem;
+	font-weight: 800;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	letter-spacing: -0.02em;
+}
+#RZ_BENTO .rz-ref-name {
+	font-size: 0.72rem;
+	font-weight: 600;
+	color: #fff;
+	line-height: 1.25;
+}
+
+#RZ_BENTO .rz-section-title,
+#RZ_PROJECTS .rz-section-title {
+	margin: 0 0 16px;
+	font-size: 0.95rem;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.82);
+}
+
+#RZ_BENTO .rz-row-2 {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: clamp(16px, 2.2vw, 24px);
+}
+#RZ_BENTO .rz-row-3 {
+	display: grid;
+	grid-template-columns: 1fr 1.2fr;
+	gap: clamp(16px, 2.2vw, 24px);
+	align-items: start;
+}
+
+#RZ_BENTO .rz-tertiary-card {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+@media (max-width: 1024px) {
+	html { background-attachment: scroll; }
+	#RZ_BENTO .rz-bento-main-grid {
+		display: flex;
+		flex-direction: column;
+	}
+	#RZ_BENTO .rz-card-profile-light {
+		width: 100%;
+		height: auto;
+		max-height: none;
+		min-height: auto;
+	}
+	#RZ_BENTO .rz-card-exp {
+		width: 100%;
+		height: auto;
+		max-height: none;
+		min-height: 520px;
+	}
+	#RZ_BENTO .rz-exp-panels-wrap {
+		min-height: 460px;
+		height: min(58vh, 540px);
+	}
+	#RZ_BENTO .rz-row-2,
+	#RZ_BENTO .rz-row-3 {
+		grid-template-columns: 1fr;
+	}
+@media (max-width: 768px) {
+	#RZ_BENTO .rz-exp-tabs {
+		flex-direction: column;
+		flex-wrap: nowrap;
+		align-items: stretch;
+		gap: 8px;
+	}
+	#RZ_BENTO .rz-exp-tabs-bridge {
+		display: none;
+	}
+	#RZ_BENTO .rz-tab-btn {
+		flex: none;
+		width: 100%;
+		min-width: 0;
+	}
+	#RZ_BENTO .rz-exp-panels-wrap {
+		min-height: 460px;
+		height: min(58vh, 540px);
+	}
+	#RZ_BENTO .rz-exp-footer {
+		justify-content: center;
+	}
+}
+@media (max-width: 720px) {
+	#RZ_BENTO .rz-interest-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}

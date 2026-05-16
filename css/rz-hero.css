@@ -1,0 +1,187 @@
+/* Fond noir sur tout le document */
+html {
+	min-height: 100%;
+	background-color: #000000;
+	background-image: none;
+}
+body {
+	margin: 0;
+	min-height: 100%;
+	background: #000000;
+}
+.arlo_tm_wrapper_all,
+.arlo_tm_content,
+.arlo_tm_rightpart,
+.arlo_tm_rightpart .rightpart_inner {
+	background-color: #000000;
+}
+
+#HERO.arlo_tm_section {
+	position: relative;
+	overflow: hidden;
+	background: #000000;
+	min-height: 100vh;
+	min-height: 100dvh;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	box-sizing: border-box;
+}
+#HERO .arlo_tm_hero_header_wrap {
+	background: transparent;
+	position: relative;
+	z-index: 1;
+	box-sizing: border-box;
+	width: 100%;
+	flex: 1 1 auto;
+	min-height: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: clamp(64px, 10svh, 100px) clamp(16px, 4vw, 28px) clamp(28px, 6svh, 48px);
+	overflow-x: hidden;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+}
+#HERO .hero_content_main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+	max-width: 1000px;
+	margin: 0 auto;
+	gap: 0;
+	box-sizing: border-box;
+}
+@keyframes rzHeroPulseRing {
+	0% {
+		box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+		opacity: 1;
+	}
+	55% {
+		box-shadow: 0 0 0 9px rgba(34, 197, 94, 0);
+		opacity: 0.9;
+	}
+	100% {
+		box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+		opacity: 1;
+	}
+}
+#HERO .rz-hero-brand {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	margin: 0 0 clamp(10px, 1.6vh, 18px);
+	padding: 8px 16px 8px 12px;
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 999px;
+	opacity: 0;
+	transition: opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#HERO .rz-hero-brand.rz-hero-brand--in {
+	opacity: 1;
+}
+#HERO .rz-hero-pulse {
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	border: none;
+	padding: 0;
+	flex-shrink: 0;
+	background: linear-gradient(145deg, #4ade80, #16a34a);
+	box-shadow: 0 0 6px rgba(34, 197, 94, 0.5);
+	animation: rzHeroPulseRing 2.2s ease-out infinite;
+	cursor: default;
+}
+#HERO .rz-hero-studio-name {
+	font-family: "Inter", system-ui, sans-serif;
+	font-size: 0.9rem;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+	color: rgba(255, 255, 255, 0.94);
+}
+#HERO .hero_title {
+	opacity: 0;
+	margin: 0 0 clamp(22px, 3.6vh, 48px);
+	font-size: clamp(2.1rem, 7.2vw, 5rem);
+	line-height: 1;
+	letter-spacing: -0.03em;
+	transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#HERO .hero_title.rz-hero-title--ready {
+	opacity: 1;
+}
+#HERO .hero_title .rz-hero-line {
+	display: block;
+	margin: 0;
+	padding: 0;
+	line-height: 1;
+}
+#HERO .hero_title .rz-hero-line.serif_italic {
+	line-height: 1.02;
+}
+#HERO .hero_subtitle {
+	opacity: 0;
+	max-width: 34rem;
+	margin: 0;
+	padding: 0;
+	font-size: clamp(0.9rem, 2.2vw, 1.05rem);
+	line-height: 1.55;
+	color: rgba(255, 255, 255, 0.62);
+	transition: opacity 1.35s cubic-bezier(0.22, 1, 0.36, 1), color 0.45s ease 0.15s;
+}
+#HERO .hero_subtitle.rz-hero-sub--in {
+	opacity: 1;
+	color: rgba(255, 255, 255, 0.74);
+}
+#HERO .rz-hero-scroll {
+	position: relative;
+	left: auto;
+	bottom: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	margin: clamp(40px, 7vh, 88px) 0 0;
+	padding: 12px 8px 6px;
+	text-decoration: none;
+	color: rgba(255, 255, 255, 0.5);
+	font-size: 0.62rem;
+	font-weight: 600;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	opacity: 0;
+	transition: opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1), color 0.35s;
+}
+#HERO .rz-hero-scroll.rz-hero-scroll--in {
+	opacity: 1;
+}
+#HERO .rz-hero-scroll:hover {
+	color: rgba(255, 255, 255, 0.88);
+}
+#HERO .rz-hero-scroll svg {
+	width: 18px;
+	height: 18px;
+	stroke: currentColor;
+	animation: rzHeroArrowSoft 2.35s ease-in-out infinite;
+}
+@keyframes rzHeroArrowSoft {
+	0%, 100% { transform: translateY(0); opacity: 0.5; }
+	50% { transform: translateY(6px); opacity: 0.95; }
+}
+@media (prefers-reduced-motion: reduce) {
+	#HERO .rz-hero-brand,
+	#HERO .hero_subtitle,
+	#HERO .rz-hero-scroll,
+	#HERO .hero_title {
+		opacity: 1 !important;
+		transition: none !important;
+		filter: none !important;
+	}
+	#HERO .rz-hero-pulse { animation: none; }
+	#HERO .rz-hero-scroll svg { animation: none; }
+}

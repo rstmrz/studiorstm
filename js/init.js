@@ -49,12 +49,6 @@ jQuery(document).ready(function(){
 		
 	});
 	
-	jQuery(window).load('body', function(){
-		setTimeout(function(){
-        jQuery('.arlo_tm_preloader').addClass('loaded');
-    }, 1000);
-	});
-	
 });
 
 // -----------------------------------------------------

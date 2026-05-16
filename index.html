@@ -1,844 +1,299 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="fr"> <!--<![endif]-->
-
-
-<!-- Mirrored from frenify.com/envato/marketify/html/arlo/1/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 09 Mar 2019 09:48:54 GMT -->
+<html lang="fr">
 <head>
-
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-<!-- 🟢 Ajoute une description claire et engageante pour Google -->
-<meta name="description" content="RZ est un portfolio professionnel spécialisé en marketing digital, stratégie produit et analyse data. Découvrez les projets réalisés et la vision stratégique de RZ.">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-
-<!-- ✅ L’auteur du site -->
-<meta name="author" content="RZ">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-<title>RZ - Portfolio</title>
-
-<!-- STYLES -->
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RZ — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="css/plugins.css" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
-<link rel="stylesheet" type="text/css" href="css/grid.css" />
-<!-- Owl Carousel CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
-
-<!-- Owl Carousel Theme (optionnel) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
-
-<!-- Owl Carousel JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
-
-
-<!--[if lt IE 9]> <script type="text/javascript" src="js/modernizr.custom.js"></script> <![endif]-->
-<!-- /STYLES -->
-
+<link rel="stylesheet" type="text/css" href="css/rz-layout.css" />
+<link rel="stylesheet" type="text/css" href="css/rz-hero.css" />
+<link rel="stylesheet" type="text/css" href="css/rz-pages-nav.css" />
+<link rel="stylesheet" type="text/css" href="css/rz-cv-editorial.css" />
 </head>
-
 <body>
 
-	<!-- PAGE DE CONNEXION STYLE ARLO -->
-<style>
-	#login-overlay {
-	  position: fixed;
-	  z-index: 9999;
-	  inset: 0;
-	  background: #0f0f0f; /* couleur proche du fond de ton site */
-	  display: flex;
-	  align-items: center;
-	  justify-content: center;
-	  font-family: 'Montserrat', sans-serif;
-	  flex-direction: column;
-	}
-  
-	.login-wrapper {
-	  background: #1c1c1c;
-	  padding: 40px 30px;
-	  border-radius: 12px;
-	  max-width: 360px;
-	  width: 90%;
-	  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-	  text-align: center;
-	  color: #fff;
-	}
-  
-	.login-wrapper h2 {
-	  font-size: 22px;
-	  font-weight: 600;
-	  margin-bottom: 25px;
-	  color: #fff;
-	}
-  
-	#password {
-	  width: 100%;
-	  padding: 12px;
-	  font-size: 15px;
-	  border: none;
-	  border-radius: 8px;
-	  margin-bottom: 15px;
-	  background: #fff;
-	  color: #000;
-	  outline: none;
-	}
-  
-	#login-btn {
-	  width: 100%;
-	  padding: 12px;
-	  font-size: 15px;
-	  background: #13b1fa;
-	  color: white;
-	  font-weight: 600;
-	  border: none;
-	  border-radius: 8px;
-	  cursor: pointer;
-	  transition: background 0.3s ease;
-	}
-  
-	#login-btn:hover {
-	  background: #00b186;
-	}
-  
-	#login-error {
-	  display: none;
-	  color: #ff4d4d;
-	  margin-top: 12px;
-	  font-size: 14px;
-	}
-  
-	.loading-screen {
-  display: none;
-  position: fixed; /* changé de absolute à fixed */
-  inset: 0;
-  background: #0f0f0f;
-  z-index: 10000;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  font-family: 'Montserrat', sans-serif;
-  color: #fff;
-}
-
-  
-	.loading-screen p {
-	  margin-bottom: 20px;
-	  font-size: 16px;
-	  letter-spacing: 0.5px;
-	}
-  
-	.loader {
-	  position: relative;
-	  width: 300px;
-	  max-width: 90%;
-	  height: 10px;
-	  background: #333;
-	  border-radius: 5px;
-	  overflow: hidden;
-	}
-  
-	.loader-fill {
-	  height: 100%;
-	  width: 0%;
-	  background: #ffffff;
-	}
-  
-	.loader-ball {
-	  width: 20px;
-	  height: 20px;
-	  background: #ffffff;
-	  border-radius: 50%;
-	  position: absolute;
-	  top: -5px;
-	  left: -10px;
-	}
-
-	@media (max-width: 480px) {
-  .login-wrapper {
-    margin: 0 auto;            /* centre horizontalement */
-    padding: 24px 20px;        /* espace interne gauche/droite */
-    width: 100%;
-    max-width: 320px;          /* empêche d’être trop large */
-  }
-
-  .login-wrapper h2 {
-    font-size: 18px;
-  }
-
-  #login-btn {
-    font-size: 15px;
-  }
-}
-
-	.loading-screen.is-visible {
-	  display: flex !important;
-	}
-
-	.loading-screen.is-visible .loader-fill {
-	  width: 0%;
-	  animation: rzLoaderFill 0.85s ease-out forwards;
-	}
-
-	.loading-screen.is-visible .loader-ball {
-	  animation: rzLoaderBall 0.85s ease-out forwards;
-	}
-
-	@keyframes rzLoaderFill {
-	  from { width: 0%; }
-	  to { width: 100%; }
-	}
-
-	@keyframes rzLoaderBall {
-	  from { left: -10px; }
-	  to { left: calc(100% - 20px); }
-	}
-
-	/* Le site ne s’affiche qu’après la barre de chargement post-mot de passe */
-	html.rz-boot-loading .arlo_tm_wrapper_all {
-	  visibility: hidden !important;
-	  pointer-events: none !important;
-	}
-
-  </style>
-  
-  <div id="login-overlay">
-	<div class="login-wrapper">
-	  <img src="img/logo/mobile-logo.png" alt="Logo" class="logo-login" style="width: 80px; margin-bottom: 60px;" />
-	  <h2 style="margin-top: 0;">Connexion</h2>
-	  <input type="password" id="password" placeholder="Mot de passe" />
-	  <button id="login-btn">Se connecter</button>
-	  <p id="login-error">Mot de passe incorrect</p>
-	</div>
-  </div>  
-  
-	<div class="loading-screen">
-	  <p>Chargement en cours...</p>
-	  <div class="loader">
-		<div class="loader-fill"></div>
-		<div class="loader-ball"></div>
-	  </div>
-	</div>
-
-<script src="js/site-access.js"></script>
-
-<!-- WRAPPER ALL -->
 <div class="arlo_tm_wrapper_all">
-
-	<div id="arlo_tm_popup_blog">
-		<div class="container">
-			<div class="inner_popup scrollable"></div>
-		</div>
-		<span class="close"><a href="#"></a></span>
-	</div>
-	
-	<!-- PRELOADER -->
-	<div class="arlo_tm_preloader">
-		<div class="spinner_wrap">
-			<div class="spinner"></div>
-		</div>
-	</div>
-	<!-- /PRELOADER -->
-	
-	<!-- MOBILE MENU -->
-	<div class="arlo_tm_mobile_header_wrap">
-		<div class="main_wrap">
-			<div class="logo">
-				<a href="index.html"><img src="img/logo/desktop-logo.png" alt="mobile_logo" /></a>
-			</div>
-			<div class="arlo_tm_trigger">
-				<div class="hamburger hamburger--collapse-r">
-					<div class="hamburger-box">
-						<div class="hamburger-inner"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="arlo_tm_mobile_menu_wrap">
-   			<div class="mob_menu">
-				<ul class="anchor_nav">
-					<li><a href="#home">Accueil</a></li>
-					<li><a href="#about">Informations</a></li>
-					<li><a href="#services">Mes compétences</a></li>
-					<li><a href="#portfolio">Portfolio</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<!-- /MOBILE MENU -->
-	
-    <!-- CONTENT -->
 	<div class="arlo_tm_content">
-		
-		<!-- LEFTPART -->
-		<div class="arlo_tm_leftpart_wrap">
-			<div class="leftpart_inner">
-				<div class="logo_wrap">
-					<a href="#"><img src="img/logo/mobile-logo.png" alt="desktop-logo" /></a>
-				</div>
-				<div class="menu_list_wrap">
-					<ul class="anchor_nav">
-						<li><a href="#home">Accueil</a></li>
-						<li><a href="#about">Informations</a></li>
-						<li><a href="#services">Mes compétences</a></li>
-						<li><a href="#portfolio">Portfolio</a></li>
-					</ul>
-				</div>
-				<div class="leftpart_bottom">
-					<div class="social_wrap">
-						<ul>
-							<li><a href="#"><i class="xcon-linkedin"></i></a></li>
-						</ul>
-					</div>
-				</div>
-				<button type="button" class="arlo_tm_resize" aria-label="Replier ou déplier le menu"><i class="xcon-angle-left"></i></button>
-			</div>
-		</div>
-		<!-- /LEFTPART -->
-		
-		<!-- RIGHTPART -->
 		<div class="arlo_tm_rightpart">
 			<div class="rightpart_inner">
-				<div class="arlo_tm_section" id="home">
+				<nav class="rz-page-nav" aria-label="Navigation principale">
+					<a href="index.html">Accueil</a>
+					<a href="CV.html">CV</a>
+					<a href="Projet.html">Références</a>
+				</nav>
+
+				<section id="HERO" class="arlo_tm_section">
 					<div class="arlo_tm_hero_header_wrap">
-						<div class="arlo_tm_universal_box_wrap">
-							<div class="bg_wrap">
-								<div class="overlay_image hero jarallax" data-speed="0.1"></div>
-								<div class="overlay_color hero"></div>
+						<div class="hero_content_main">
+							<div class="rz-hero-brand" id="rz-hero-brand">
+								<span class="rz-hero-pulse" role="presentation" aria-hidden="true"></span>
+								<span class="rz-hero-studio-name">studio.rstm</span>
 							</div>
-							<div class="content hero">
-								<div class="inner_content">
-									<div class="image_wrap">
-										<img src="img/autres/photopro3.png" alt="hero" />
-									</div>
-									<div class="name_holder">
-										<h3>ZEHHAR <span>Rostom</span></h3>
-									</div>
-									<br>
-									<div class="arlo_tm_mini_title_holder">
-										<h6>Je suis  <span class="arlo_tm_animation_text_word"></span></h6>
-										<br>
+							<h1 class="hero_title" id="rz-hero-title">
+								<span class="rz-hero-line">Je suis</span>
+								<span class="rz-hero-line serif_italic">créateur de valeur</span>
+								<span class="rz-hero-line">pour les marques.</span>
+							</h1>
+							<p class="hero_subtitle" id="rz-hero-sub">
+								Accompagnement stratégique, acquisition de trafic et optimisation de la performance pour transformer votre présence digitale.
+							</p>
+							<a class="rz-hero-scroll" href="#RZ_CV_EDITORIAL" aria-label="Aller au contenu">
+								<span>Défiler</span>
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+							</a>
+						</div>
+					</div>
+				</section>
+
+				<section id="RZ_CV_EDITORIAL" class="arlo_tm_section rz-cv-ed" aria-label="Présentation CV">
+					<p class="rz-cv-ed__watermark rz-cv-ed__watermark--top" aria-hidden="true">Portfolio</p>
+					<div class="rz-cv-ed__inner">
+
+						<div class="rz-cv-ed__intro">
+							<img class="rz-cv-ed__photo" src="img/autres/photopro2.png" alt="Rostom Zehhar" width="168" height="168" loading="lazy" />
+							<div>
+								<p class="rz-cv-ed__label">nom/</p>
+								<h2 class="rz-cv-ed__name-row">
+									<span class="rz-cv-ed__name">rostom zehhar</span>
+									<a class="rz-cv-ed__name-li" href="https://www.linkedin.com/in/rstmrz" target="_blank" rel="noopener noreferrer" aria-label="Profil LinkedIn — Rostom Zehhar">
+										<img src="img/svg/linkedin-svgrepo-com.svg" alt="" width="44" height="44" loading="lazy" />
+									</a>
+								</h2>
+								<p class="rz-cv-ed__role">campaign manager - data marketing specialist</p>
+							</div>
+						</div>
+
+						<div class="rz-cv-ed__bio">
+							<p class="rz-cv-ed__label">parcours/</p>
+							<p>Spécialiste du marketing digital et de la performance média, j’accompagne les marques de la stratégie à l’exécution : trafficking programmatique (CM360), acquisition payante, analytics et optimisation des campagnes. J’ai piloté des comptes majeurs (Air France, Disney, Décathlon, Acer, Volkswagen, KIA) et mené des missions en agence, en entreprise et en freelance, avec une approche orientée data, industrialisation et création de valeur.</p>
+						</div>
+
+						<div class="rz-cv-ed__meta-grid">
+							<div class="rz-cv-ed__meta-col">
+								<p class="rz-cv-ed__label">formation/</p>
+								<div class="rz-cv-ed__formation-item">
+									<p class="rz-cv-ed__school"><strong>EMLV/IIM</strong></p>
+									<p class="rz-cv-ed__degree">Master Digital Marketing &amp; Data Analytics</p>
+								</div>
+								<div class="rz-cv-ed__formation-item">
+									<p class="rz-cv-ed__school"><strong>UPEC</strong></p>
+									<p class="rz-cv-ed__degree">Licence AEI option e-commerce</p>
 								</div>
 							</div>
-							<div class="arlo_tm_arrow_wrap bounce anchor">
-								<a href="#about"><i class="xcon-angle-double-down"></i></a>
+							<div class="rz-cv-ed__meta-col">
+								<p class="rz-cv-ed__label">contact/</p>
+								<p><a href="mailto:rzehhar1@gmail.com">rzehhar1@gmail.com</a></p>
+							</div>
+							<div class="rz-cv-ed__meta-col">
+								<p class="rz-cv-ed__label">localisation/</p>
+								<p>Île-de-France</p>
+								<p class="rz-cv-ed__meta-col--spaced">Permis B</p>
 							</div>
 						</div>
-					</div>
-				</div>
-				
-				<!-- ABOUT -->
-				<div class="arlo_tm_section relative" id="about">
-					<div class="arlo_tm_about_wrapper_all">
-						<div class="container">
-							<h2 class="rostom-title">Qui-suis-je</h2>
-							<div class="arlo_tm_about_wrap">
-								<div class="author_wrap">
-									<div class="leftbox">
-										<div class="about_image_wrap parallax" data-relative-input="true">
-											<div class="image layer" data-depth="0.1">
-												<img src="img/about/550x640.jpg" alt="550x640" />
-												<div class="inner" data-img-url="img/autres/photopro2.png"></div>
-											</div>
-											<div class="border layer" data-depth="0.2">
-												<img src="img/about/550x640.jpg" alt="550x640" />
-												<div class="inner"></div>
-											</div>
-										</div>
 
+						<div class="rz-cv-ed__split">
+							<p class="rz-cv-ed__label">expériences/</p>
+							<div class="rz-cv-ed__jobs">
+								<article class="rz-cv-ed__job">
+									<p class="rz-cv-ed__job-period">Sept 2025 — sept 2026</p>
+									<div class="rz-cv-ed__job-body">
+										<p class="rz-cv-ed__job-company">ADventori / CoolCo</p>
+										<p class="rz-cv-ed__job-role">Campaign Manager (Paris · Présentiel)</p>
 									</div>
-									<div class="rightbox">
-										<div class="definition">
-											<p>Bonjour,</p> <br> <p>Je m'appelle <strong>Rostom ZEHHAR</strong>, <strong>freelance en marketing digital</strong> depuis plus de 5 ans. J’accompagne les entreprises dans leur <strong>stratégie digitale</strong>, la <strong>direction artistique</strong> de leurs marques et la <strong>création de landing pages performantes</strong>.</p> <br> <p>Polyvalent et orienté résultats, j’interviens sur des missions alliant <strong>marketing, analyse de données</strong> et <strong>développement web</strong>. Actuellement, je me spécialise davantage dans l’<strong>acquisition web payante</strong> (Google Ads, Meta Ads, LinkedIn Ads) afin d’optimiser la performance des campagnes et le retour sur investissement.</p> <br> <p>Mon objectif : aider chaque client à transformer sa présence digitale en véritable levier de croissance.</p> <br>
+								</article>
+								<article class="rz-cv-ed__job">
+									<p class="rz-cv-ed__job-period">Janv 2023 — sept 2024</p>
+									<div class="rz-cv-ed__job-body">
+										<p class="rz-cv-ed__job-company">Human design Group</p>
+										<p class="rz-cv-ed__job-role">Chef de projet marketing &amp; communication (Versailles)</p>
 									</div>
+								</article>
+								<article class="rz-cv-ed__job">
+									<p class="rz-cv-ed__job-period">Août 2022 — déc 2022</p>
+									<div class="rz-cv-ed__job-body">
+										<p class="rz-cv-ed__job-company">Cirtéus</p>
+										<p class="rz-cv-ed__job-role">Chef de projet marketing &amp; ADV (La Défense)</p>
+									</div>
+								</article>
+								<article class="rz-cv-ed__job">
+									<p class="rz-cv-ed__job-period">Janv 2022 — juin 2022</p>
+									<div class="rz-cv-ed__job-body">
+										<p class="rz-cv-ed__job-company">Younishop</p>
+										<p class="rz-cv-ed__job-role">Responsable marketing (Paris)</p>
+									</div>
+								</article>
+							</div>
+						</div>
+
+						<div class="rz-cv-ed__split rz-cv-ed__skills-wrap">
+							<p class="rz-cv-ed__label">compétences techniques/</p>
+							<div class="rz-cv-ed__skills-content">
+								<div class="rz-tool-legend" role="list" aria-label="Niveau de maîtrise des outils">
+									<span class="rz-leg rz-leg--auto" role="listitem"><span class="rz-leg-dot" aria-hidden="true"></span> Autonome</span>
+									<span class="rz-leg rz-leg--deep" role="listitem"><span class="rz-leg-dot" aria-hidden="true"></span> Connaissances approfondies</span>
+									<span class="rz-leg rz-leg--know" role="listitem"><span class="rz-leg-dot" aria-hidden="true"></span> Connaissances simples</span>
+									<span class="rz-leg rz-leg--learn" role="listitem"><span class="rz-leg-dot" aria-hidden="true"></span> En formation</span>
+								</div>
+								<div class="rz-tool-grid">
+									<span class="rz-tool-item rz-tool-item--know"><img class="rz-tool-icon" src="img/svg/google-ads-svgrepo-com.svg" alt="" loading="lazy" />Google Ads</span>
+									<span class="rz-tool-item rz-tool-item--know"><img class="rz-tool-icon rz-tool-icon--mono" src="img/svg/meta-logo-facebook-svgrepo-com.svg" alt="" loading="lazy" />Meta Ads</span>
+									<span class="rz-tool-item rz-tool-item--know"><img class="rz-tool-icon rz-tool-icon--mono" src="img/svg/linkedin-svgrepo-com.svg" alt="" loading="lazy" />LinkedIn Ads</span>
+									<span class="rz-tool-item rz-tool-item--deep"><img class="rz-tool-icon rz-tool-icon--mono" src="img/svg/Google%20Campaign%20Manager%20360.svg" alt="" loading="lazy" />Campaign Manager 360</span>
+									<span class="rz-tool-item rz-tool-item--know"><img class="rz-tool-icon" src="img/svg/google-analytics-3-logo-svgrepo-com.svg" alt="" loading="lazy" />Google Analytics</span>
+									<span class="rz-tool-item rz-tool-item--know"><img class="rz-tool-icon" src="img/svg/google-tag-manager-svgrepo-com.svg" alt="" loading="lazy" />Google Tag Manager</span>
+									<span class="rz-tool-item rz-tool-item--know"><img class="rz-tool-icon" src="img/svg/matomo-svgrepo-com.svg" alt="" loading="lazy" />Matomo</span>
+									<span class="rz-tool-item rz-tool-item--know"><img class="rz-tool-icon" src="img/svg/tableau-icon-svgrepo-com.svg" alt="" loading="lazy" />Tableau</span>
+									<span class="rz-tool-item rz-tool-item--deep"><img class="rz-tool-icon" src="img/svg/shopify-svgrepo-com.svg" alt="" loading="lazy" />Shopify</span>
+									<span class="rz-tool-item rz-tool-item--deep"><img class="rz-tool-icon rz-tool-icon--mono" src="img/svg/wordpress-139-svgrepo-com.svg" alt="" loading="lazy" />WordPress</span>
+									<span class="rz-tool-item rz-tool-item--know"><img class="rz-tool-icon rz-tool-icon--mono" src="img/svg/framer-svgrepo-com.svg" alt="" loading="lazy" />Framer</span>
+									<span class="rz-tool-item rz-tool-item--deep"><img class="rz-tool-icon rz-tool-icon--mono" src="img/svg/layers.svg" alt="" loading="lazy" />Webflow</span>
+									<span class="rz-tool-item rz-tool-item--know"><img class="rz-tool-icon" src="img/svg/figma-svgrepo-com.svg" alt="" loading="lazy" />Figma</span>
+									<span class="rz-tool-item rz-tool-item--deep"><img class="rz-tool-icon" src="img/svg/photoshop-cc-logo-svgrepo-com.svg" alt="" loading="lazy" />Photoshop</span>
+									<span class="rz-tool-item rz-tool-item--deep"><img class="rz-tool-icon" src="img/svg/adobe-illustrator-svgrepo-com.svg" alt="" loading="lazy" />Illustrator</span>
+									<span class="rz-tool-item rz-tool-item--deep"><img class="rz-tool-icon" src="img/svg/adobe-premiere-pro-cc-1430-vector-svg-.svg" alt="" loading="lazy" />Première Pro</span>
+									<span class="rz-tool-item rz-tool-item--deep"><img class="rz-tool-icon" src="img/svg/html-5-svgrepo-com.svg" alt="" loading="lazy" />HTML5</span>
+									<span class="rz-tool-item rz-tool-item--deep"><img class="rz-tool-icon" src="img/svg/css-3-svgrepo-com.svg" alt="" loading="lazy" />CSS3</span>
+									<span class="rz-tool-item rz-tool-item--deep"><img class="rz-tool-icon" src="img/svg/js-svgrepo-com.svg" alt="" loading="lazy" />JavaScript</span>
+									<span class="rz-tool-item rz-tool-item--auto"><img class="rz-tool-icon rz-tool-icon--mono" src="img/svg/notion-svgrepo-com.svg" alt="" loading="lazy" />Notion</span>
+									<span class="rz-tool-item rz-tool-item--auto"><img class="rz-tool-icon" src="img/svg/excel-svgrepo-com.svg" alt="" loading="lazy" />Excel</span>
+									<span class="rz-tool-item rz-tool-item--auto"><img class="rz-tool-icon rz-tool-icon--mono" src="img/svg/OpenAI_logo_2025_(symbol).svg" alt="" loading="lazy" />ChatGPT</span>
+									<span class="rz-tool-item rz-tool-item--auto"><img class="rz-tool-icon" src="img/svg/Google_Gemini_icon_2025.svg" alt="" loading="lazy" />Gemini</span>
+									<span class="rz-tool-item rz-tool-item--deep"><img class="rz-tool-icon rz-tool-icon--mono" src="img/svg/cursor-color.svg" alt="" loading="lazy" />Cursor</span>
+									<span class="rz-tool-item rz-tool-item--auto"><img class="rz-tool-icon rz-tool-icon--mono" src="img/svg/canva-svgrepo-com.svg" alt="" loading="lazy" />Canva</span>
+									<span class="rz-tool-item rz-tool-item--auto"><img class="rz-tool-icon" src="img/svg/mailchimp-svgrepo-com.svg" alt="" loading="lazy" />Mailchimp</span>
+									<span class="rz-tool-item rz-tool-item--know"><img class="rz-tool-icon" src="img/svg/github-icon-1.svg" alt="" loading="lazy" />GitHub</span>
+									<span class="rz-tool-item rz-tool-item--know"><img class="rz-tool-icon" src="img/svg/vercel.svg" alt="" loading="lazy" />Vercel</span>
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-				<!-- /ABOUT -->
-				
-<!-- SKILLS -->
-<div class="arlo_tm_section">
-	<div class="arlo_tm_skills_wrap">
-		<div class="container">
-			<div class="inner_wrap">
-				<div class="leftbox">
-					<h5>Polyvalent et passionné par le digital, j’ai développé des compétences solides à travers mes expériences professionnelles et ma formation. Je suis motivé et déterminé à progresser dans un environnement formateur.</h5>
-				</div>
-				<div class="rightbox">
-					<div class="progress_bar_wrap_total">
-						<div class="arlo_tm_progress_wrap" data-size="small" data-round="c" data-strip="off">
 
-							<div class="arlo_tm_progress" data-value="90" data-color="#000">
-								<span><span class="label">Stratégie marketing digital  </span><span class="number">90%</span></span>
-								<div class="arlo_tm_bar_bg"><div class="arlo_tm_bar_wrap"><div class="arlo_tm_bar"></div></div></div>
+						<div class="rz-cv-ed__split rz-cv-ed__clients-wrap">
+							<p class="rz-cv-ed__label">références/</p>
+							<div>
+							<ul class="rz-cv-ed__clients">
+								<li><strong>ADventori / CoolCo</strong> (Programmatique et Adtech)</li>
+								<li><strong>Adidas</strong> (Data &amp; performance)</li>
+									<li><strong>Swile</strong> (SEO &amp; analytics)</li>
+									<li><strong>Medcapo</strong> (Marketing &amp; branding)</li>
+									<li><strong>Sunny Dollz</strong> (Communication)</li>
+									<li><strong>Qamari</strong> (E-commerce)</li>
+									<li><strong>Audioptika</strong> (Branding)</li>
+									<li><strong>Beyt el Attar</strong> (E-commerce)</li>
+									<li><strong>Cirtéus</strong> (Communication)</li>
+									<li><strong>Human design Group</strong> (Marketing &amp; data)</li>
+									<li><strong>Younishop</strong> (Marketing digital)</li>
+									<li><strong>PSG</strong> (Branding)</li>
+									<li><strong>Sportéo</strong> (SEO &amp; e-commerce)</li>
+									<li><strong>Maison TAJ</strong> (Communication)</li>
+								<li><strong>RSTZHR</strong> (Portfolio / identité)</li>
+							</ul>
+							<a class="rz-cv-ed__discover" href="Projet.html">Découvrir</a>
 							</div>
+						</div>
 
-							<div class="arlo_tm_progress" data-value="85" data-color="#000">
-								<span><span class="label">Gestion de projet  </span><span class="number">85%</span></span>
-								<div class="arlo_tm_bar_bg"><div class="arlo_tm_bar_wrap"><div class="arlo_tm_bar"></div></div></div>
-							</div>
-
-							<div class="arlo_tm_progress" data-value="80" data-color="#000">
-								<span><span class="label">Communication digitale </span><span class="number">80%</span></span>
-								<div class="arlo_tm_bar_bg"><div class="arlo_tm_bar_wrap"><div class="arlo_tm_bar"></div></div></div>
-							</div>
-
-							<div class="arlo_tm_progress" data-value="75" data-color="#000">
-								<span><span class="label">Création de contenus </span><span class="number">75%</span></span>
-								<div class="arlo_tm_bar_bg"><div class="arlo_tm_bar_wrap"><div class="arlo_tm_bar"></div></div></div>
-							</div>
-
-							<div class="arlo_tm_progress" data-value="70" data-color="#000">
-								<span><span class="label">Optimisation e-commerce  <span class="experience"></span></span><span class="number">60%</span></span>
-								<div class="arlo_tm_bar_bg"><div class="arlo_tm_bar_wrap"><div class="arlo_tm_bar"></div></div></div>
-							</div>
-
-							<div class="arlo_tm_progress" data-value="65" data-color="#000">
-								<span><span class="label">Analyse de données  <span class="experience"></span></span><span class="number">50%</span></span>
-								<div class="arlo_tm_bar_bg"><div class="arlo_tm_bar_wrap"><div class="arlo_tm_bar"></div></div></div>
-							</div>
-
+						<div class="rz-cv-ed__split">
+							<p class="rz-cv-ed__label">recommandations/</p>
+							<ul class="rz-cv-ed__refs">
+								<li class="rz-cv-ed__ref">
+									<span class="rz-cv-ed__ref-name">Valentin Berthelot</span>
+									<span class="rz-cv-ed__ref-links">
+										<a class="rz-cv-ed__ref-li" href="https://www.linkedin.com/search/results/people/?keywords=Valentin%20Berthelot" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn — Valentin Berthelot"><img src="img/svg/linkedin-svgrepo-com.svg" alt="" width="22" height="22" loading="lazy" /></a>
+										<a class="rz-cv-ed__ref-mail" href="mailto:contact@example.com?subject=R%C3%A9f%C3%A9rence%20%E2%80%94%20Valentin%20Berthelot" aria-label="E-mail — Valentin Berthelot"><img src="img/svg/e-mail.svg" alt="" width="22" height="22" loading="lazy" /></a>
+									</span>
+								</li>
+								<li class="rz-cv-ed__ref">
+									<span class="rz-cv-ed__ref-name">Dimitar Alieksev</span>
+									<span class="rz-cv-ed__ref-links">
+										<a class="rz-cv-ed__ref-li" href="https://www.linkedin.com/search/results/people/?keywords=Dimitar%20Alieksev" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn — Dimitar Alieksev"><img src="img/svg/linkedin-svgrepo-com.svg" alt="" width="22" height="22" loading="lazy" /></a>
+										<a class="rz-cv-ed__ref-mail" href="mailto:contact@example.com?subject=R%C3%A9f%C3%A9rence%20%E2%80%94%20Dimitar%20Alieksev" aria-label="E-mail — Dimitar Alieksev"><img src="img/svg/e-mail.svg" alt="" width="22" height="22" loading="lazy" /></a>
+									</span>
+								</li>
+								<li class="rz-cv-ed__ref">
+									<span class="rz-cv-ed__ref-name">Sacha Yazzaoui</span>
+									<span class="rz-cv-ed__ref-links">
+										<a class="rz-cv-ed__ref-li" href="https://www.linkedin.com/search/results/people/?keywords=Sacha%20Yazzaoui" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn — Sacha Yazzaoui"><img src="img/svg/linkedin-svgrepo-com.svg" alt="" width="22" height="22" loading="lazy" /></a>
+										<a class="rz-cv-ed__ref-mail" href="mailto:contact@example.com?subject=R%C3%A9f%C3%A9rence%20%E2%80%94%20Sacha%20Yazzaoui" aria-label="E-mail — Sacha Yazzaoui"><img src="img/svg/e-mail.svg" alt="" width="22" height="22" loading="lazy" /></a>
+									</span>
+								</li>
+								<li class="rz-cv-ed__ref">
+									<span class="rz-cv-ed__ref-name">Aurélie Bellune</span>
+									<span class="rz-cv-ed__ref-links">
+										<a class="rz-cv-ed__ref-li" href="https://www.linkedin.com/search/results/people/?keywords=Aur%C3%A9lie%20Bellune" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn — Aurélie Bellune"><img src="img/svg/linkedin-svgrepo-com.svg" alt="" width="22" height="22" loading="lazy" /></a>
+										<a class="rz-cv-ed__ref-mail" href="mailto:contact@example.com?subject=R%C3%A9f%C3%A9rence%20%E2%80%94%20Aur%C3%A9lie%20Bellune" aria-label="E-mail — Aurélie Bellune"><img src="img/svg/e-mail.svg" alt="" width="22" height="22" loading="lazy" /></a>
+									</span>
+								</li>
+								<li class="rz-cv-ed__ref">
+									<span class="rz-cv-ed__ref-name">Dhouha El Amri</span>
+									<span class="rz-cv-ed__ref-links">
+										<a class="rz-cv-ed__ref-li" href="https://www.linkedin.com/search/results/people/?keywords=Dhouha%20El%20Amri" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn — Dhouha El Amri"><img src="img/svg/linkedin-svgrepo-com.svg" alt="" width="22" height="22" loading="lazy" /></a>
+										<a class="rz-cv-ed__ref-mail" href="mailto:contact@example.com?subject=R%C3%A9f%C3%A9rence%20%E2%80%94%20Dhouha%20El%20Amri" aria-label="E-mail — Dhouha El Amri"><img src="img/svg/e-mail.svg" alt="" width="22" height="22" loading="lazy" /></a>
+									</span>
+								</li>
+							</ul>
 						</div>
 					</div>
-				</div>
+				</section>
+
+				<section id="RZ_RECHERCH" class="arlo_tm_section rz-recherche-stage" aria-labelledby="rz-recherche-heading">
+					<div class="rz-glass-shell">
+						<header class="rz-block-head">
+							<h2 id="rz-recherche-heading" class="rz-block-title-serif serif_italic">Créons une synergie</h2>
+						</header>
+					</div>
+				</section>
+
+
+				<footer id="RZ_FOOTER" class="arlo_tm_section rz-site-footer">
+					<div class="rz-footer-inner">
+						<p class="rz-footer-copy">© <span id="rz-footer-year"></span> Rostom Zehhar — Portfolio</p>
+					</div>
+				</footer>
+
 			</div>
 		</div>
 	</div>
 </div>
-<!-- /SKILLS -->
-				
-				<!-- SERVICES -->
-				<div class="arlo_tm_section" id="services">
-					<div class="arlo_tm_services_wrap">
-						<div class="container">
-							<h2 class="rostom-title">Compétence techniques</h2>
-							<div class="list_wrap">
-								<ul>
-									<li>
-										<div class="inner">
-											<div class="icon">
-												<img class="svg" src="img/svg/camera-diaphragm.svg" alt="camera-diaphragm" />
-											</div>
-											<div class="title_service">
-												<h3>Marketing Digital</h3>
-											</div>
-											<span class="tag tag-ads"> <img src="img/svg/googleads.svg" alt="Google Ads"
-												style="height: 1em; vertical-align: middle; margin-right: 0.3em;">
-										   Google Ads</span>
-										   <span class="tag tag-ads"> <img src="img/svg/fbads.svg" alt="FB Ads"
-											style="height: 1.5em; vertical-align: middle; margin-right: 0.3em;">
-									   Facebook Ads</span>
-									   <span class="tag tag-ads"> <img src="img/svg/snapchat-logo.svg" alt="Snapchat Ads"
-										style="height: 1.3em; vertical-align: middle; margin-right: 0.3em;"> Snapchat Ads</span>
-										<span class="tag tag-ads"> <img src="img/svg/mailchimp-icon.svg" alt="Mailchimp"
-											style="height: 1.3em; vertical-align: middle; margin-right: 0.3em;"> Mailchimp</span>
-											<span class="tag tag-ads"> <img src="img/svg/answerthepublic.png" alt="Answer The Public"
-												style="height: 1.3em; vertical-align: middle; margin-right: 0.3em;"> Answer The Public</span>
-												<span class="tag tag-ads"> <img src="img/svg/google trends.png" alt="Google Trends"
-													style="height: 1.3em; vertical-align: middle; margin-right: 0.3em;"> Google Trends</span>
-
-											<div class="text">
-												<br><p><strong>Création et gestion de campagnes emailing avec Mailchimp :</strong> newsletters, automatisations, segmentation d’audience.</p>
-												<br><p><strong>Compréhension de la structure des campagnes publicitaires :</strong> Google Ads, Facebook Ads et Snapchat Ads.</p>
-												<br><p><strong>Recherche de mots-clés et d’idées de contenu : </strong> Answer The Public et Google Trends dans une logique SEO.</p>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="inner">
-											<div class="icon">
-												<img class="svg" src="img/svg/camera-diaphragm.svg" alt="camera-diaphragm" />
-											</div>
-											<div class="title_service">
-												<h3>Analyse de données & performance</h3>
-											</div>
-											<span class="tag tag-analytics">Google Analytics</span>
-											<span class="tag tag-analytics">Matomo</span>
-											<span class="tag tag-analytics">Tableau</span>
-											<span class="tag tag-analytics">Airtable</span>
-
-											<div class="text">
-												<br><p><strong>Suivi et analyse du trafic web :</strong> utilisation de Matomo pour monitorer les performances d’un site et interpréter les comportements utilisateurs.</p>
-      											<br><p><strong>Lecture et compréhension des rapports analytiques :</strong> notions acquises via Google Analytics (sessions, taux de rebond, conversions).</p>
-      											<br><p><strong>Visualisation de données et reporting :</strong> création de tableaux de bord simples avec Tableau et gestion de bases collaboratives via Airtable.</p>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="inner">
-											<div class="icon">
-												<img class="svg" src="img/svg/camera-diaphragm.svg" alt="camera-diaphragm" />
-											</div>
-											<div class="title_service">
-												<h3>Création graphique & vidéo</h3>
-											</div>
-											<span class="tag tag-ads">Photoshop</span>
-											<span class="tag tag-ads">Illustrator</span>
-											<span class="tag tag-ads">Premiere Pro</span>
-
-											<div class="text">
-												<br><p><strong>Conception de visuels pros : </strong>réseaux sociaux, newsletters, supports de communication.</p>
-												<br><p><strong>Notions de Photoshop et Illustrator : </strong>retouches simples, création de visuels.</p>
-												<br><p><strong>Montage de courtes vidéos avec Premiere Pro (découpe, titrage, transitions de base).</strong></p>
-											</div>
-										</div>
-									</li>
-								</ul>
-							</div>
-							<div class="list_wrap">
-								<ul>
-									<li>
-										<div class="inner">
-											<div class="icon">
-												<img class="svg" src="img/svg/camera-diaphragm.svg" alt="camera-diaphragm" />
-											</div>
-											<div class="title_service">
-												<h3>Web & CMS</h3>
-											</div>
-											<span class="tag tag-ads">Wordpress</span>
-											<span class="tag tag-email">Shopify</span>
-											<span class="tag tag-seo">Webflow</span>
-
-											<div class="text">
-												<br><p><strong>Création de landing pages et gestion de contenu via WordPress (en entreprise).</strong></p>
-												<br><p><strong>Notions de base en Shopify :</strong> gestion de boutique, produits, et configuration.</p>
-												<br><p><strong>Découverte de Webflow pour des projets en no-code :</strong>structuration visuelle et design interactif.</p>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="inner">
-											<div class="icon">
-												<img class="svg" src="img/svg/camera-diaphragm.svg" alt="camera-diaphragm" />
-											</div>
-											<div class="title_service">
-												<h3>Développement web</h3>
-											</div>
-											<span class="tag tag-analytics">HTML</span>
-											<span class="tag tag-analytics">CSS</span>
-											<span class="tag tag-analytics">JS</span>
-
-											<div class="text">
-												<br><p><strong>Création et personnalisation de landing pages simples.</strong></p>
-      											<br><p><strong>Intégration front-end basique dans des projets web (via VSCode ou CMS).</strong></p>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="inner">
-											<div class="icon">
-												<img class="svg" src="img/svg/camera-diaphragm.svg" alt="camera-diaphragm" />
-											</div>
-											<div class="title_service">
-												<h3>Bureautique & outils collaboratifs</h3>
-											</div>
-											<span class="tag tag-ads">Microsoft Word</span>
-											<span class="tag tag-ads">Excel</span>
-											<span class="tag tag-ads">PowerPoint</span>
-											<span class="tag tag-ads">Livestorm</span>
-
-											<div class="text">
-												<br><p><strong>Maîtrise des outils Microsoft Office pour la gestion de projets, présentations et tableaux de suivi.</strong></p>
-												<br><p><strong>Utilisation de Livestorm pour l’organisation et l’animation de webinaires, y compris les campagnes d’invitations et l’automatisation des relances.</strong></p>
-											</div>
-										</div>
-									</li>
-									
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- /SERVICES -->
-				
-				<!-- PORTFOLIO -->
-				<div class="arlo_tm_section" id="portfolio"></div>
-<section id="portfolio" class="portfolio-section">
-	<div class="portfolio-container">
-  
-	  <!-- Portfolio Header -->
-	  <div class="portfolio-inner">
-		<h2 class="rostom-title">Portfolio</h2>
-  
-		<!-- Filters -->
-		<div class="portfolio-filters">
-		  <ul class="filter-list">
-			<li><a href="#" class="filter active" data-filter="*">All</a></li>
-			<li><a href="#" class="filter" data-filter=".devweb">Développement-web</a></li>
-			<li><a href="#" class="filter" data-filter=".graphisme">Graphisme</a></li>
-			<li><a href="#" class="filter" data-filter=".data">Data</a></li>
-			<li><a href="#" class="filter" data-filter=".seo">SEO</a></li>
-			<li><a href="#" class="filter" data-filter=".mix">Mix (plusieurs missions)</a></li>
-		  </ul>
-		</div>
-  
-		<!-- Portfolio Grid -->
-		<ul class="portfolio-grid">
-		  <!-- Item -->
-		  <li class="portfolio-item data">
-			<div class="portfolio-entry">
-			  <a href="projet-adidas.html">
-				<img src="img/portfolio/600x600.jpg" alt="Adidas" />
-				<div class="portfolio-image" data-img-url="img/portfolio/adidas.png"></div>
-				<div class="portfolio-overlay">
-				  <span class="portfolio-title">Adidas</span>
-				</div>
-			  </a>
-			</div>
-		  </li>
-  
-		  <li class="portfolio-item graphisme">
-			<div class="portfolio-entry">
-			  <a href="projet-audioptika.html">
-				<img src="img/portfolio/600x600.jpg" alt="Audioptika" />
-				<div class="portfolio-image" data-img-url="img/portfolio/audioptika.png"></div>
-				<div class="portfolio-overlay">
-				  <span class="portfolio-title">Audioptika</span>
-				</div>
-			  </a>
-			</div>
-		  </li>
-
-		  <li class="portfolio-item mix">
-			<div class="portfolio-entry">
-			  <a href="projet-beytelattar.html">
-				<img src="img/portfolio/600x600.jpg" alt="BeytelAttar" />
-				<div class="portfolio-image" data-img-url="img/portfolio/beytelattar.png"></div>
-				<div class="portfolio-overlay">
-				  <span class="portfolio-title">Beyt el Attar</span>
-				</div>
-			  </a>
-			</div>
-		  </li>
-
-		  <li class="portfolio-item mix">
-			<div class="portfolio-entry">
-			  <a href="projet-cirteus.html">
-				<img src="img/portfolio/600x600.jpg" alt="Cirtéus" />
-				<div class="portfolio-image" data-img-url="img/portfolio/cirteus.png"></div>
-				<div class="portfolio-overlay">
-				  <span class="portfolio-title">Cirtéus</span>
-				</div>
-			  </a>
-			</div>
-		  </li>
-
-		  <li class="portfolio-item mix">
-			<div class="portfolio-entry">
-			  <a href="projet-hdg.html">
-				<img src="img/portfolio/600x600.jpg" alt="HumandesignGroup" />
-				<div class="portfolio-image" data-img-url="img/portfolio/hdg.png"></div>
-				<div class="portfolio-overlay">
-				  <span class="portfolio-title">Human design Group</span>
-				</div>
-			  </a>
-			</div>
-		  </li>
-
-		  <li class="portfolio-item mix">
-			<div class="portfolio-entry">
-			  <a href="projet-medcapo.html">
-				<img src="img/portfolio/600x600.jpg" alt="medcapo" />
-				<div class="portfolio-image" data-img-url="img/portfolio/MEDCAPO.png"></div>
-				<div class="portfolio-overlay">
-				  <span class="portfolio-title">Medcapo</span>
-				</div>
-			  </a>
-			</div>
-		  </li>
-
-		  <li class="portfolio-item graphisme">
-			<div class="portfolio-entry">
-			  <a href="projet-psg.html">
-				<img src="img/portfolio/600x600.jpg" alt="PSG" />
-				<div class="portfolio-image" data-img-url="img/portfolio/psg.png"></div>
-				<div class="portfolio-overlay">
-				  <span class="portfolio-title">PSG</span>
-				</div>
-			  </a>
-			</div>
-		  </li>
-
-		  <li class="portfolio-item mix">
-			<div class="portfolio-entry">
-			  <a href="projet-qamari.html">
-				<img src="img/portfolio/600x600.jpg" alt="Qamari" />
-				<div class="portfolio-image" data-img-url="img/portfolio/qamari.png"></div>
-				<div class="portfolio-overlay">
-				  <span class="portfolio-title">Qamari</span>
-				</div>
-			  </a>
-			</div>
-		  </li>
-
-		  <li class="portfolio-item seo">
-			<div class="portfolio-entry">
-			  <a href="projet-sporteo.html">
-				<img src="img/portfolio/600x600.jpg" alt="Sportéo" />
-				<div class="portfolio-image" data-img-url="img/logo/Sportéo.png"></div>
-				<div class="portfolio-overlay">
-				  <span class="portfolio-title">Sportéo</span>
-				</div>
-			  </a>
-			</div>
-		  </li>
-
-		  <li class="portfolio-item graphisme">
-			<div class="portfolio-entry">
-			  <a href="projet-sunnydollz.html">
-				<img src="img/portfolio/600x600.jpg" alt="Sunnydollz" />
-				<div class="portfolio-image" data-img-url="img/portfolio/sunnydollz.png"></div>
-				<div class="portfolio-overlay">
-				  <span class="portfolio-title">Sunny Dollz</span>
-				</div>
-			  </a>
-			</div>
-		  </li>
-
-		  <li class="portfolio-item seo">
-			<div class="portfolio-entry">
-			  <a href="projet-swile.html">
-				<img src="img/portfolio/600x600.jpg" alt="Swile" />
-				<div class="portfolio-image" data-img-url="img/logo/swile-logo.png"></div>
-				<div class="portfolio-overlay">
-				  <span class="portfolio-title">Swile</span>
-				</div>
-			  </a>
-			</div>
-		  </li>
-
-		  <li class="portfolio-item mix">
-			<div class="portfolio-entry">
-			  <a href="projet-taj.html">
-				<img src="img/portfolio/600x600.jpg" alt="Taj" />
-				<div class="portfolio-image" data-img-url="img/portfolio/TAJ.png"></div>
-				<div class="portfolio-overlay">
-				  <span class="portfolio-title">Taj</span>
-				</div>
-			  </a>
-			</div>
-		  </li>
-
-		  <li class="portfolio-item mix">
-			<div class="portfolio-entry">
-			  <a href="projet-younishop.html">
-				<img src="img/portfolio/600x600.jpg" alt="Younishop" />
-				<div class="portfolio-image" data-img-url="img/portfolio/younishop.png"></div>
-				<div class="portfolio-overlay">
-				  <span class="portfolio-title">Younishop</span>
-				</div>
-			  </a>
-			</div>
-		  </li>
-
-		  <li class="portfolio-item devweb">
-			<div class="portfolio-entry">
-			  <a href="projet-zr.html">
-				<img src="img/portfolio/600x600.jpg" alt="Zehhar Rostom" />
-				<div class="portfolio-image" data-img-url="img/portfolio/ZR.png"></div>
-				<div class="portfolio-overlay">
-				  <span class="portfolio-title">ZR</span>
-				</div>
-			  </a>
-			</div>
-		  </li>
-  
-  
-		</ul>
-	  </div>
-	</div>
-  </section>
-				<!-- /PORTFOLIO -->
-  
-				  
-						<div class="arlo_tm_footer_wrap">
-							<div class="container">
-								<p>&copy; <b>Rostom Zehhar, 2025 -</b> Tous droits réservés.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- /CONTACT & FOOTER -->
-				
-			</div>
-		</div>
-		<!-- /RIGHTPART -->
-		
-		<a class="arlo_tm_totop" href="#"></a> 
-		
-	</div>
-</div>
-<!-- / WRAPPER ALL -->
-	
-<!-- SCRIPTS -->
-<script src="js/jquery.js"></script>
-<!--[if lt IE 10]> <script type="text/javascript" src="js/ie8.js"></script> <![endif]-->	
-<script src="js/plugins.js"></script>
-<script src="js/init.js"></script>
 
 <script>
-	$(document).ready(function(){
-	  $(".owl-carousel").owlCarousel({
-		items: 1,
-		loop: true,
-		nav: false,
-		dots: true, // ← bullet points activés
-		autoplay: true,
-		autoplayTimeout: 5000,
-		smartSpeed: 600
-	  });
-	});
-	</script>
+(function () {
+	var brand = document.getElementById("rz-hero-brand");
+	var titleEl = document.getElementById("rz-hero-title");
+	var sub = document.getElementById("rz-hero-sub");
+	var scrollL = document.querySelector("#HERO .rz-hero-scroll");
+	if (!brand || !titleEl || !sub || !scrollL) return;
 
-<!-- SCRIPTS POUR PORTFOLIO -->
- 
-<script>
-	document.addEventListener("DOMContentLoaded", function () {
-	  const filterLinks = document.querySelectorAll(".filter-list .filter");
-	  const portfolioItems = document.querySelectorAll(".portfolio-item");
-	
-	  filterLinks.forEach(link => {
-		link.addEventListener("click", function (e) {
-		  e.preventDefault();
-	
-		  // Gérer la classe active
-		  filterLinks.forEach(l => l.classList.remove("active"));
-		  this.classList.add("active");
-	
-		  const filter = this.getAttribute("data-filter");
-	
-		  portfolioItems.forEach(item => {
-			if (filter === "*" || item.classList.contains(filter.replace('.', ''))) {
-			  item.style.display = "block";
-			  item.classList.add("show");
-			} else {
-			  item.style.display = "none";
-			  item.classList.remove("show");
-			}
-		  });
-		});
-	  });
-	});
+	var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+	function reveal() {
+		brand.classList.add("rz-hero-brand--in");
+		setTimeout(function () {
+			titleEl.classList.add("rz-hero-title--ready");
+		}, 380);
+		setTimeout(function () {
+			sub.classList.add("rz-hero-sub--in");
+		}, 900);
+		setTimeout(function () {
+			scrollL.classList.add("rz-hero-scroll--in");
+		}, 1480);
+	}
+
+	if (reduce) {
+		brand.classList.add("rz-hero-brand--in");
+		titleEl.classList.add("rz-hero-title--ready");
+		sub.classList.add("rz-hero-sub--in");
+		scrollL.classList.add("rz-hero-scroll--in");
+	} else if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", reveal);
+	} else {
+		reveal();
+	}
+
+	var yearEl = document.getElementById("rz-footer-year");
+	if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+})();
 </script>
-	
-	  
-	  
-	  
-	  
-	
-
-<!-- /SCRIPTS -->
 
 </body>
-
-<!-- Mirrored from frenify.com/envato/marketify/html/arlo/1/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 09 Mar 2019 09:48:54 GMT -->
 </html>
