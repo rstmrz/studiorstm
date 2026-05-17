@@ -9,13 +9,11 @@
 	var dotsRoot = document.getElementById("rz-synergie-dots");
 	var content = stage.querySelector(".rz-synergie-content");
 	var trackEndEl = document.getElementById("rz-synergie-track-end");
-	var milestones = stage.querySelectorAll(".rz-synergie-content .rz-synergie-milestone");
 	var reveals = stage.querySelectorAll(".rz-synergie-reveal");
 	var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-	var dots = [];
+	var anchors = [];
 	var trackHeight = 0;
-	var anchorOffsets = [];
 	var ticking = false;
 
 	function getProbeY() {
@@ -30,6 +28,58 @@
 		return content.offsetHeight;
 	}
 
+	function getExpHeaderNodes(el) {
+		return {
+			title: el.querySelector(".rz-synergie-exp-title"),
+			company: el.querySelector(".rz-synergie-exp-company"),
+		};
+	}
+
+	function getAnchorCenterY(el) {
+		var header = getExpHeaderNodes(el);
+		if (header.title && header.company) {
+			var top = header.title.offsetTop;
+			var bottom = header.company.offsetTop + header.company.offsetHeight;
+			return top + (bottom - top) * 0.5;
+		}
+		return el.offsetTop + el.offsetHeight * 0.42;
+	}
+
+	function getAnchorViewportY(el) {
+		var header = getExpHeaderNodes(el);
+		if (header.title && header.company) {
+			var t = header.title.getBoundingClientRect();
+			var c = header.company.getBoundingClientRect();
+			return (t.top + c.bottom) * 0.5;
+		}
+		var rect = el.getBoundingClientRect();
+		return rect.top + rect.height * 0.42;
+	}
+
+	function collectAnchors() {
+		var nodes = content.querySelectorAll(".rz-synergie-milestone, .rz-synergie-exp");
+		return Array.prototype.slice.call(nodes);
+	}
+
+	function buildLogoBox(exp) {
+		var box = document.createElement("span");
+		box.className = "rz-synergie-exp-logo__box";
+
+		if (exp.dataset.logoText) {
+			box.classList.add("rz-synergie-exp-logo__box--text");
+			box.textContent = exp.dataset.logoText;
+		} else if (exp.dataset.logoSrc) {
+			var img = document.createElement("img");
+			img.src = exp.dataset.logoSrc;
+			img.alt = "";
+			img.loading = "lazy";
+			img.decoding = "async";
+			box.appendChild(img);
+		}
+
+		return box;
+	}
+
 	function layoutTimeline() {
 		if (!trackCol || !content || !dotsRoot || !trackFill) return;
 
@@ -37,35 +87,41 @@
 		trackCol.style.minHeight = trackHeight + "px";
 
 		dotsRoot.innerHTML = "";
-		dots = [];
-		anchorOffsets = [];
+		anchors = [];
 
-		milestones.forEach(function (milestone, i) {
-			var centerY = milestone.offsetTop + milestone.offsetHeight * 0.5;
-			anchorOffsets.push(centerY);
-
+		collectAnchors().forEach(function (node) {
+			var centerY = getAnchorCenterY(node);
+			var isExp = node.classList.contains("rz-synergie-exp");
 			var dot = document.createElement("span");
-			dot.className = "rz-synergie-dot";
-			dot.setAttribute("data-index", String(i));
+
+			dot.className = isExp ? "rz-synergie-dot rz-synergie-dot--logo" : "rz-synergie-dot";
 			dot.style.top = centerY + "px";
+
+			if (isExp) {
+				dot.appendChild(buildLogoBox(node));
+			}
+
 			dotsRoot.appendChild(dot);
-			dots.push(dot);
+			anchors.push({
+				el: node,
+				dot: dot,
+				y: centerY,
+				isExp: isExp,
+			});
 		});
 
 		if (reduce) {
 			trackFill.style.height = trackHeight + "px";
-			dots.forEach(function (d) {
-				d.classList.add("is-lit", "is-active");
-			});
-			milestones.forEach(function (m) {
-				m.classList.add("is-active");
+			anchors.forEach(function (a) {
+				a.dot.classList.add("is-lit", "is-active");
+				a.el.classList.add("is-active");
 			});
 		}
 	}
 
 	function updateTimeline() {
 		ticking = false;
-		if (!trackFill || !anchorOffsets.length || reduce) return;
+		if (!trackFill || !anchors.length || reduce) return;
 
 		var probe = getProbeY();
 		var activeIndex = -1;
@@ -74,52 +130,47 @@
 		var stageRect = stage.getBoundingClientRect();
 		var atSectionEnd = stageRect.bottom <= window.innerHeight * 1.05;
 
-		for (var i = 0; i < milestones.length; i++) {
-			var rect = milestones[i].getBoundingClientRect();
-			var center = rect.top + rect.height * 0.5;
-			if (center <= probe) {
+		for (var i = 0; i < anchors.length; i++) {
+			if (getAnchorViewportY(anchors[i].el) <= probe) {
 				activeIndex = i;
 			}
 		}
 
 		if (atSectionEnd) {
-			activeIndex = milestones.length - 1;
+			activeIndex = anchors.length - 1;
 			fillPx = trackHeight;
 		} else if (activeIndex < 0) {
 			fillPx = 0;
-		} else if (activeIndex < milestones.length - 1) {
-			var curRect = milestones[activeIndex].getBoundingClientRect();
-			var nextRect = milestones[activeIndex + 1].getBoundingClientRect();
-			var curY = curRect.top + curRect.height * 0.5;
-			var nextY = nextRect.top + nextRect.height * 0.5;
-			fillPx = anchorOffsets[activeIndex];
+		} else if (activeIndex < anchors.length - 1) {
+			var curY = getAnchorViewportY(anchors[activeIndex].el);
+			var nextY = getAnchorViewportY(anchors[activeIndex + 1].el);
+			fillPx = anchors[activeIndex].y;
 			if (probe > curY && nextY > curY) {
 				var t = Math.min(1, Math.max(0, (probe - curY) / (nextY - curY)));
 				fillPx =
-					anchorOffsets[activeIndex] +
-					t * (anchorOffsets[activeIndex + 1] - anchorOffsets[activeIndex]);
+					anchors[activeIndex].y +
+					t * (anchors[activeIndex + 1].y - anchors[activeIndex].y);
 			}
 		} else {
-			var lastRect = milestones[activeIndex].getBoundingClientRect();
-			var lastY = lastRect.top + lastRect.height * 0.5;
-			fillPx = anchorOffsets[activeIndex];
+			var lastY = getAnchorViewportY(anchors[activeIndex].el);
+			fillPx = anchors[activeIndex].y;
 			if (probe > lastY) {
 				var tail = Math.min(1, (probe - lastY) / Math.max(100, window.innerHeight * 0.2));
 				fillPx =
-					anchorOffsets[activeIndex] +
-					tail * (trackHeight - anchorOffsets[activeIndex]);
+					anchors[activeIndex].y +
+					tail * (trackHeight - anchors[activeIndex].y);
 			}
 		}
 
 		trackFill.style.height = Math.max(0, Math.min(trackHeight, fillPx)) + "px";
 
-		dots.forEach(function (dot, i) {
-			dot.classList.toggle("is-lit", i <= activeIndex);
-			dot.classList.toggle("is-active", i === activeIndex);
-		});
+		anchors.forEach(function (anchor, i) {
+			var lit = i <= activeIndex;
+			var active = i === activeIndex;
 
-		milestones.forEach(function (milestone, i) {
-			milestone.classList.toggle("is-active", i === activeIndex);
+			anchor.dot.classList.toggle("is-lit", lit);
+			anchor.dot.classList.toggle("is-active", active);
+			anchor.el.classList.toggle("is-active", active);
 		});
 	}
 
@@ -176,10 +227,14 @@
 	}
 
 	window.addEventListener("scroll", onScrollOrResize, { passive: true });
-	window.addEventListener("resize", function () {
-		layoutTimeline();
-		onScrollOrResize();
-	}, { passive: true });
+	window.addEventListener(
+		"resize",
+		function () {
+			layoutTimeline();
+			onScrollOrResize();
+		},
+		{ passive: true }
+	);
 
 	if (document.fonts && document.fonts.ready) {
 		document.fonts.ready.then(function () {
