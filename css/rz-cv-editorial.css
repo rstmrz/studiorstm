@@ -5,7 +5,7 @@
 	box-sizing: border-box;
 	background: #000000;
 	color: #ffffff;
-	padding: clamp(48px, 8vw, 96px) clamp(20px, 5vw, 48px) clamp(64px, 10vw, 120px);
+	padding: clamp(48px, 8vw, 96px) clamp(20px, 5vw, 48px) clamp(40px, 6vw, 64px);
 	overflow: hidden;
 	font-family: "Inter", system-ui, sans-serif;
 }
@@ -441,23 +441,17 @@ a.rz-cv-ed__mini-tag:hover {
 	color: rgba(255, 255, 255, 0.5);
 	letter-spacing: 0.02em;
 }
-.rz-cv-ed__clients-detail {
-	display: inline-block;
-	margin-top: 8px;
-	font-size: 0.72rem;
-	font-weight: 500;
-	color: #c2cbe4;
-	text-decoration: underline;
-	text-underline-offset: 3px;
-	transition: color 0.2s ease;
-}
-.rz-cv-ed__clients-detail:hover {
-	color: #ffffff;
-}
-.rz-cv-ed__clients-main {
+.rz-cv-ed__clients-marquee-wrap {
+	position: relative;
 	width: 100%;
 	min-width: 0;
-	margin-top: clamp(14px, 2.5vw, 20px);
+	padding-bottom: clamp(56px, 7vw, 68px);
+}
+.rz-cv-ed__clients-detail-btn {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	z-index: 2;
 }
 .rz-trust-marquee {
 	overflow: hidden;
@@ -480,17 +474,18 @@ a.rz-cv-ed__mini-tag:hover {
 	flex-shrink: 0;
 }
 .rz-trust-marquee__logo-box {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	display: block;
 	width: clamp(52px, 7vw, 60px);
 	height: clamp(52px, 7vw, 60px);
-	border-radius: 12px;
+	border-radius: 3px;
 	background: rgba(255, 255, 255, 0.06);
 	border: 1px solid rgba(255, 255, 255, 0.12);
 	overflow: hidden;
 }
 .rz-trust-marquee__logo-box--text {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	font-family: "Inter", system-ui, sans-serif;
 	font-size: 0.7rem;
 	font-weight: 700;
@@ -498,11 +493,11 @@ a.rz-cv-ed__mini-tag:hover {
 	color: rgba(255, 255, 255, 0.92);
 }
 .rz-trust-marquee__logo {
+	display: block;
 	width: 100%;
 	height: 100%;
-	object-fit: contain;
-	padding: 9px;
-	box-sizing: border-box;
+	object-fit: cover;
+	object-position: center;
 }
 @keyframes rzTrustMarquee {
 	from {

@@ -1,6 +1,6 @@
 /* Section « Créons une synergie » */
 #RZ_RECHERCH.rz-synergie-stage {
-	padding: clamp(12px, 2vw, 24px) clamp(16px, 4vw, 40px) clamp(88px, 12vw, 140px);
+	padding: clamp(4px, 1vw, 10px) clamp(16px, 4vw, 40px) clamp(88px, 12vw, 140px);
 	overflow-x: hidden;
 }
 
@@ -8,7 +8,7 @@
 #RZ_RECHERCH .rz-synergie-hero {
 	width: 100%;
 	text-align: center;
-	padding: clamp(12px, 2.5vw, 28px) 0 clamp(32px, 5vw, 56px);
+	padding: clamp(8px, 1.5vw, 16px) 0 clamp(44px, 6.5vw, 72px);
 	box-sizing: border-box;
 }
 
@@ -215,6 +215,10 @@
 	line-height: 1.15;
 	color: rgba(255, 255, 255, 0.95);
 	transition: color 0.25s ease;
+}
+
+#RZ_RECHERCH .rz-synergie-text--spaced {
+	margin-bottom: 1.15em;
 }
 
 #RZ_RECHERCH .rz-synergie-cta-hook {
