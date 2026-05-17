@@ -24,6 +24,10 @@
 	transition: color 0.2s;
 }
 .rz-page-nav a:hover { color: #fff; }
+.rz-page-nav a[aria-current="page"] {
+	color: #ffffff;
+	box-shadow: inset 0 -2px 0 #ffffff;
+}
 #HERO .arlo_tm_hero_header_wrap {
 	padding-top: clamp(88px, 12svh, 110px);
 }
