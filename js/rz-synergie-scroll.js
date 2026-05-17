@@ -28,11 +28,24 @@
 		return content.offsetHeight;
 	}
 
+	function getExpHead(el) {
+		return el.querySelector(".rz-synergie-exp-head");
+	}
+
 	function getAnchorCenterY(el) {
+		var head = getExpHead(el);
+		if (head) {
+			return el.offsetTop + head.offsetTop + head.offsetHeight * 0.5;
+		}
 		return el.offsetTop + el.offsetHeight * 0.5;
 	}
 
 	function getAnchorViewportY(el) {
+		var head = getExpHead(el);
+		if (head) {
+			var rect = head.getBoundingClientRect();
+			return rect.top + rect.height * 0.5;
+		}
 		var rect = el.getBoundingClientRect();
 		return rect.top + rect.height * 0.5;
 	}
