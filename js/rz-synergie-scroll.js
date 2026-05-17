@@ -28,32 +28,13 @@
 		return content.offsetHeight;
 	}
 
-	function getExpHeaderNodes(el) {
-		return {
-			title: el.querySelector(".rz-synergie-exp-title"),
-			company: el.querySelector(".rz-synergie-exp-company"),
-		};
-	}
-
 	function getAnchorCenterY(el) {
-		var header = getExpHeaderNodes(el);
-		if (header.title && header.company) {
-			var top = header.title.offsetTop;
-			var bottom = header.company.offsetTop + header.company.offsetHeight;
-			return top + (bottom - top) * 0.5;
-		}
-		return el.offsetTop + el.offsetHeight * 0.42;
+		return el.offsetTop + el.offsetHeight * 0.5;
 	}
 
 	function getAnchorViewportY(el) {
-		var header = getExpHeaderNodes(el);
-		if (header.title && header.company) {
-			var t = header.title.getBoundingClientRect();
-			var c = header.company.getBoundingClientRect();
-			return (t.top + c.bottom) * 0.5;
-		}
 		var rect = el.getBoundingClientRect();
-		return rect.top + rect.height * 0.42;
+		return rect.top + rect.height * 0.5;
 	}
 
 	function collectAnchors() {
