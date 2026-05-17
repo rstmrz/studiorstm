@@ -49,11 +49,6 @@ body {
 	transform: scale(calc(1.04 + var(--hero-zoom) * 0.1));
 	will-change: transform;
 }
-@media (min-width: 769px) {
-	#HERO.rz-hero--media .rz-hero-video {
-		object-position: center bottom;
-	}
-}
 #HERO.rz-hero--media .rz-hero-media__veil {
 	position: absolute;
 	inset: 0;
