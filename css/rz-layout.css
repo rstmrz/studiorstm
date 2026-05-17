@@ -39,12 +39,13 @@ body {
 }
 #RZ_FOOTER .rz-footer-nav {
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	align-items: center;
 	justify-content: center;
 	gap: 8px;
 	margin: 0;
 	width: 100%;
+	max-width: 100%;
 }
 #RZ_FOOTER .rz-cv-ed__tag-btn {
 	display: inline-flex;
@@ -86,11 +87,27 @@ body {
 	font-size: 0.78rem;
 	text-align: center;
 }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+	#RZ_FOOTER.rz-site-footer {
+		padding-left: 12px;
+		padding-right: 12px;
+	}
+	#RZ_FOOTER .rz-footer-inner {
+		flex-direction: column !important;
+		align-items: center !important;
+		justify-content: center !important;
+		text-align: center !important;
+		width: 100%;
+	}
 	#RZ_FOOTER .rz-footer-nav {
-		flex-wrap: nowrap;
-		justify-content: center;
-		gap: clamp(4px, 1.2vw, 8px);
+		display: flex !important;
+		flex-wrap: nowrap !important;
+		flex-direction: row !important;
+		justify-content: center !important;
+		align-items: center !important;
+		width: 100%;
+		max-width: 100%;
+		gap: clamp(4px, 1vw, 8px);
 		overflow-x: auto;
 		-webkit-overflow-scrolling: touch;
 		scrollbar-width: none;
@@ -99,13 +116,35 @@ body {
 		display: none;
 	}
 	#RZ_FOOTER .rz-cv-ed__tag-btn {
-		padding: 6px clamp(6px, 1.8vw, 10px);
-		font-size: clamp(0.58rem, 2.4vw, 0.68rem);
-		gap: 5px;
+		flex: 1 1 0;
+		min-width: 0;
+		max-width: none;
+		padding: 8px clamp(4px, 1.5vw, 10px);
+		font-size: clamp(0.56rem, 2.2vw, 0.68rem);
+		gap: 4px;
 	}
 	#RZ_FOOTER .rz-cv-ed__tag-btn-icon {
 		width: 12px;
 		height: 12px;
+	}
+	#RZ_FOOTER .rz-cv-ed__tag-btn span {
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	#RZ_FOOTER .rz-footer-copy {
+		text-align: center !important;
+		width: 100%;
+	}
+}
+@media (max-width: 380px) {
+	#RZ_FOOTER .rz-cv-ed__tag-btn {
+		padding: 8px 3px;
+		font-size: 0.52rem;
+		gap: 3px;
+	}
+	#RZ_FOOTER .rz-cv-ed__tag-btn-icon {
+		width: 11px;
+		height: 11px;
 	}
 }
 #RZ_RECHERCH.rz-recherche-stage {
