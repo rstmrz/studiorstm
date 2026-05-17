@@ -9,13 +9,16 @@
 	var dotsRoot = document.getElementById("rz-synergie-dots");
 	var content = stage.querySelector(".rz-synergie-content");
 	var trackEndEl = document.getElementById("rz-synergie-track-end");
-	var milestones = stage.querySelectorAll(".rz-synergie-content .rz-synergie-milestone");
+	var expZoneHead = stage.querySelector(".rz-synergie-exp-zone-head");
+	var steps = stage.querySelectorAll(".rz-synergie-content > .rz-synergie-step");
 	var reveals = stage.querySelectorAll(".rz-synergie-reveal");
 	var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	var dots = [];
 	var trackHeight = 0;
 	var anchorOffsets = [];
+	var expStartIndex = -1;
+	var expEndIndex = -1;
 	var ticking = false;
 
 	function getProbeY() {
@@ -30,8 +33,52 @@
 		return content.offsetHeight;
 	}
 
+	function getStepMarker(step) {
+		return (
+			step.querySelector(
+				".rz-synergie-tagline, .rz-synergie-section-title, .rz-synergie-exp-title, .rz-synergie-cta-title"
+			) || step
+		);
+	}
+
+	function getStepCenterY(step) {
+		var marker = getStepMarker(step);
+		return step.offsetTop + marker.offsetTop + marker.offsetHeight * 0.5;
+	}
+
+	function createDot(step, index) {
+		var marker = getStepMarker(step);
+		var centerY = getStepCenterY(step);
+		var dot = document.createElement("span");
+		var logoSrc = step.getAttribute("data-logo");
+		var logoInitials = step.getAttribute("data-logo-initials");
+		var logoAlt = step.getAttribute("data-logo-alt") || "";
+
+		dot.className = "rz-synergie-dot";
+		if (logoSrc || logoInitials) {
+			dot.classList.add("rz-synergie-dot--brand");
+		}
+		dot.setAttribute("data-index", String(index));
+		dot.style.top = centerY + "px";
+
+		if (logoSrc) {
+			var img = document.createElement("img");
+			img.src = logoSrc;
+			img.alt = logoAlt;
+			img.loading = "lazy";
+			img.decoding = "async";
+			dot.appendChild(img);
+		} else if (logoInitials) {
+			dot.textContent = logoInitials;
+		}
+
+		anchorOffsets.push(centerY);
+		dotsRoot.appendChild(dot);
+		dots.push(dot);
+	}
+
 	function layoutTimeline() {
-		if (!trackCol || !content || !dotsRoot || !trackFill) return;
+		if (!trackCol || !content || !dotsRoot || !trackFill || !steps.length) return;
 
 		trackHeight = getTrackLimit();
 		trackCol.style.minHeight = trackHeight + "px";
@@ -39,17 +86,15 @@
 		dotsRoot.innerHTML = "";
 		dots = [];
 		anchorOffsets = [];
+		expStartIndex = -1;
+		expEndIndex = -1;
 
-		milestones.forEach(function (milestone, i) {
-			var centerY = milestone.offsetTop + milestone.offsetHeight * 0.5;
-			anchorOffsets.push(centerY);
-
-			var dot = document.createElement("span");
-			dot.className = "rz-synergie-dot";
-			dot.setAttribute("data-index", String(i));
-			dot.style.top = centerY + "px";
-			dotsRoot.appendChild(dot);
-			dots.push(dot);
+		steps.forEach(function (step, i) {
+			if (step.classList.contains("rz-synergie-step--exp")) {
+				if (expStartIndex < 0) expStartIndex = i;
+				expEndIndex = i;
+			}
+			createDot(step, i);
 		});
 
 		if (reduce) {
@@ -57,9 +102,10 @@
 			dots.forEach(function (d) {
 				d.classList.add("is-lit", "is-active");
 			});
-			milestones.forEach(function (m) {
-				m.classList.add("is-active");
+			steps.forEach(function (s) {
+				s.classList.add("is-active");
 			});
+			if (expZoneHead) expZoneHead.classList.add("is-active");
 		}
 	}
 
@@ -74,8 +120,8 @@
 		var stageRect = stage.getBoundingClientRect();
 		var atSectionEnd = stageRect.bottom <= window.innerHeight * 1.05;
 
-		for (var i = 0; i < milestones.length; i++) {
-			var rect = milestones[i].getBoundingClientRect();
+		for (var i = 0; i < steps.length; i++) {
+			var rect = steps[i].getBoundingClientRect();
 			var center = rect.top + rect.height * 0.5;
 			if (center <= probe) {
 				activeIndex = i;
@@ -83,13 +129,13 @@
 		}
 
 		if (atSectionEnd) {
-			activeIndex = milestones.length - 1;
+			activeIndex = steps.length - 1;
 			fillPx = trackHeight;
 		} else if (activeIndex < 0) {
 			fillPx = 0;
-		} else if (activeIndex < milestones.length - 1) {
-			var curRect = milestones[activeIndex].getBoundingClientRect();
-			var nextRect = milestones[activeIndex + 1].getBoundingClientRect();
+		} else if (activeIndex < steps.length - 1) {
+			var curRect = steps[activeIndex].getBoundingClientRect();
+			var nextRect = steps[activeIndex + 1].getBoundingClientRect();
 			var curY = curRect.top + curRect.height * 0.5;
 			var nextY = nextRect.top + nextRect.height * 0.5;
 			fillPx = anchorOffsets[activeIndex];
@@ -100,7 +146,7 @@
 					t * (anchorOffsets[activeIndex + 1] - anchorOffsets[activeIndex]);
 			}
 		} else {
-			var lastRect = milestones[activeIndex].getBoundingClientRect();
+			var lastRect = steps[activeIndex].getBoundingClientRect();
 			var lastY = lastRect.top + lastRect.height * 0.5;
 			fillPx = anchorOffsets[activeIndex];
 			if (probe > lastY) {
@@ -118,9 +164,17 @@
 			dot.classList.toggle("is-active", i === activeIndex);
 		});
 
-		milestones.forEach(function (milestone, i) {
-			milestone.classList.toggle("is-active", i === activeIndex);
+		steps.forEach(function (step, i) {
+			step.classList.toggle("is-active", i === activeIndex);
 		});
+
+		if (expZoneHead) {
+			var inExpZone =
+				activeIndex >= expStartIndex &&
+				activeIndex <= expEndIndex &&
+				expStartIndex >= 0;
+			expZoneHead.classList.toggle("is-active", inExpZone);
+		}
 	}
 
 	function updateMark() {
@@ -176,10 +230,14 @@
 	}
 
 	window.addEventListener("scroll", onScrollOrResize, { passive: true });
-	window.addEventListener("resize", function () {
-		layoutTimeline();
-		onScrollOrResize();
-	}, { passive: true });
+	window.addEventListener(
+		"resize",
+		function () {
+			layoutTimeline();
+			onScrollOrResize();
+		},
+		{ passive: true }
+	);
 
 	if (document.fonts && document.fonts.ready) {
 		document.fonts.ready.then(function () {

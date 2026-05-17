@@ -56,7 +56,7 @@
 
 #RZ_RECHERCH .rz-synergie-body {
 	display: grid;
-	grid-template-columns: 28px minmax(0, 1fr);
+	grid-template-columns: 40px minmax(0, 1fr);
 	column-gap: clamp(14px, 3vw, 22px);
 	align-items: stretch;
 }
@@ -122,6 +122,44 @@
 	background: #ffffff;
 	border-color: #c2cbe4;
 	box-shadow: 0 0 0 4px rgba(194, 203, 228, 0.35);
+}
+#RZ_RECHERCH .rz-synergie-dot--brand {
+	width: 32px;
+	height: 32px;
+	border-radius: 6px;
+	background: rgba(20, 22, 28, 0.95);
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	font-family: "Inter", system-ui, sans-serif;
+	font-size: 0.58rem;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+	color: rgba(255, 255, 255, 0.55);
+	opacity: 0.45;
+	filter: grayscale(1);
+	transition: opacity 0.35s ease, filter 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+}
+#RZ_RECHERCH .rz-synergie-dot--brand img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	padding: 3px;
+}
+#RZ_RECHERCH .rz-synergie-dot--brand.is-lit {
+	opacity: 0.72;
+	filter: grayscale(0.35);
+}
+#RZ_RECHERCH .rz-synergie-dot--brand.is-active {
+	opacity: 1;
+	filter: none;
+	border-color: #c2cbe4;
+	color: #ffffff;
+	box-shadow: 0 0 0 4px rgba(194, 203, 228, 0.28);
+	transform: translate(-50%, -50%) scale(1.06);
 }
 
 #RZ_RECHERCH .rz-synergie-content {
@@ -196,8 +234,55 @@
 	font-weight: 600;
 }
 
-#RZ_RECHERCH .rz-synergie-milestone.is-active {
-	color: #c2cbe4 !important;
+/* Activation par étape au scroll */
+#RZ_RECHERCH .rz-synergie-step {
+	transition: opacity 0.4s ease;
+}
+#RZ_RECHERCH .rz-synergie-step .rz-synergie-tagline,
+#RZ_RECHERCH .rz-synergie-step .rz-synergie-section-title,
+#RZ_RECHERCH .rz-synergie-step .rz-synergie-exp-title,
+#RZ_RECHERCH .rz-synergie-step .rz-synergie-cta-title,
+#RZ_RECHERCH .rz-synergie-step .rz-synergie-text,
+#RZ_RECHERCH .rz-synergie-step .rz-synergie-tools-line,
+#RZ_RECHERCH .rz-synergie-step .rz-synergie-cta-hook {
+	opacity: 0.34;
+	color: rgba(255, 255, 255, 0.42);
+	transition: opacity 0.4s ease, color 0.4s ease;
+}
+#RZ_RECHERCH .rz-synergie-step.is-active .rz-synergie-tagline,
+#RZ_RECHERCH .rz-synergie-step.is-active .rz-synergie-section-title,
+#RZ_RECHERCH .rz-synergie-step.is-active .rz-synergie-exp-title,
+#RZ_RECHERCH .rz-synergie-step.is-active .rz-synergie-cta-title {
+	opacity: 1;
+	color: #c2cbe4;
+}
+#RZ_RECHERCH .rz-synergie-step.is-active .rz-synergie-text,
+#RZ_RECHERCH .rz-synergie-step.is-active .rz-synergie-tools-line,
+#RZ_RECHERCH .rz-synergie-step.is-active .rz-synergie-cta-hook {
+	opacity: 1;
+	color: rgba(255, 255, 255, 0.88);
+}
+#RZ_RECHERCH .rz-synergie-step.is-active .rz-synergie-lead {
+	color: rgba(255, 255, 255, 0.92);
+}
+#RZ_RECHERCH .rz-synergie-step.is-active .rz-synergie-tools-line strong {
+	color: rgba(255, 255, 255, 0.94);
+}
+#RZ_RECHERCH .rz-synergie-exp-zone-head {
+	opacity: 0.34;
+	color: rgba(255, 255, 255, 0.42);
+	transition: opacity 0.4s ease, color 0.4s ease;
+}
+#RZ_RECHERCH .rz-synergie-exp-zone-head.is-active {
+	opacity: 1;
+	color: #c2cbe4;
+}
+#RZ_RECHERCH .rz-synergie-step--cta .rz-synergie-cta-actions {
+	opacity: 0.34;
+	transition: opacity 0.4s ease;
+}
+#RZ_RECHERCH .rz-synergie-step--cta.is-active .rz-synergie-cta-actions {
+	opacity: 1;
 }
 
 #RZ_RECHERCH .rz-synergie-cta-block {
@@ -256,8 +341,13 @@
 		white-space: normal;
 	}
 	#RZ_RECHERCH .rz-synergie-body {
-		grid-template-columns: 22px minmax(0, 1fr);
+		grid-template-columns: 34px minmax(0, 1fr);
 		column-gap: 12px;
+	}
+	#RZ_RECHERCH .rz-synergie-dot--brand {
+		width: 28px;
+		height: 28px;
+		font-size: 0.52rem;
 	}
 }
 
@@ -272,5 +362,20 @@
 		opacity: 1;
 		transform: none;
 		transition: none;
+	}
+	#RZ_RECHERCH .rz-synergie-step .rz-synergie-tagline,
+	#RZ_RECHERCH .rz-synergie-step .rz-synergie-section-title,
+	#RZ_RECHERCH .rz-synergie-step .rz-synergie-exp-title,
+	#RZ_RECHERCH .rz-synergie-step .rz-synergie-cta-title,
+	#RZ_RECHERCH .rz-synergie-step .rz-synergie-text,
+	#RZ_RECHERCH .rz-synergie-step .rz-synergie-tools-line,
+	#RZ_RECHERCH .rz-synergie-step .rz-synergie-cta-hook,
+	#RZ_RECHERCH .rz-synergie-exp-zone-head {
+		opacity: 1;
+		color: rgba(255, 255, 255, 0.88);
+	}
+	#RZ_RECHERCH .rz-synergie-dot--brand {
+		opacity: 1;
+		filter: none;
 	}
 }
