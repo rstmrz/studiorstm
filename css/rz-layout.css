@@ -1,17 +1,21 @@
 html {
 	min-height: 100%;
 	background-color: #000000;
+	background-image: none;
 }
 body {
 	margin: 0;
 	min-height: 100%;
 	background: #000000;
+	background-image: none;
 }
 .arlo_tm_wrapper_all,
 .arlo_tm_content,
 .arlo_tm_rightpart,
-.arlo_tm_rightpart .rightpart_inner {
+.arlo_tm_rightpart .rightpart_inner,
+.arlo_tm_section {
 	background-color: #000000;
+	background-image: none;
 }
 #RZ_FOOTER.rz-site-footer {
 	position: relative;
