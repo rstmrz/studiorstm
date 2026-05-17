@@ -1,0 +1,206 @@
+/* Template fiche référence / étude de cas (aligné sur index.html) */
+.rz-case {
+	position: relative;
+	box-sizing: border-box;
+	background: #000000;
+	color: #ffffff;
+	font-family: "Inter", system-ui, sans-serif;
+	padding: clamp(88px, 12vw, 110px) clamp(20px, 5vw, 48px) clamp(64px, 10vw, 100px);
+}
+
+.rz-case__inner {
+	max-width: 1120px;
+	margin: 0 auto;
+}
+
+.rz-case-back {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	margin-bottom: clamp(28px, 4vw, 40px);
+	padding: 7px 12px;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.16);
+	font-size: 0.72rem;
+	font-weight: 500;
+	color: rgba(255, 255, 255, 0.88);
+	text-decoration: none;
+	transition: background 0.25s, border-color 0.25s, color 0.25s;
+}
+.rz-case-back:hover {
+	background: #ffffff;
+	border-color: #ffffff;
+	color: #000000;
+}
+
+.rz-case-hero {
+	margin-bottom: clamp(40px, 6vw, 56px);
+	padding-bottom: clamp(28px, 4vw, 40px);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.rz-case-hero__brand {
+	margin: 0 0 8px;
+	font-size: clamp(2rem, 5.5vw, 3.25rem);
+	font-weight: 800;
+	letter-spacing: -0.03em;
+	line-height: 1.05;
+	color: #ffffff;
+}
+.rz-case-hero__lead {
+	margin: 0;
+	max-width: 720px;
+	font-size: clamp(1rem, 2.2vw, 1.25rem);
+	font-weight: 400;
+	line-height: 1.45;
+	color: rgba(255, 255, 255, 0.78);
+}
+.rz-case-hero__rule {
+	display: block;
+	width: clamp(80px, 12vw, 150px);
+	height: 3px;
+	margin-top: clamp(20px, 3vw, 28px);
+	background: #c2cbe4;
+	border: none;
+}
+
+.rz-case-split {
+	display: grid;
+	grid-template-columns: minmax(220px, 280px) 1fr;
+	gap: clamp(24px, 4vw, 48px);
+	align-items: start;
+	margin-bottom: clamp(48px, 7vw, 72px);
+}
+
+.rz-case-sidebar {
+	padding: clamp(24px, 3vw, 32px);
+	border-radius: 12px;
+	background: rgba(255, 255, 255, 0.06);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.rz-case-sidebar__logo {
+	display: block;
+	max-width: 100px;
+	width: 100%;
+	height: auto;
+	margin: 0 auto clamp(24px, 3vw, 32px);
+	object-fit: contain;
+}
+.rz-case-sidebar p {
+	margin: 0 0 16px;
+	font-size: clamp(0.82rem, 1.5vw, 0.92rem);
+	line-height: 1.5;
+	color: rgba(255, 255, 255, 0.88);
+}
+.rz-case-sidebar p:last-child {
+	margin-bottom: 0;
+}
+.rz-case-sidebar strong {
+	display: block;
+	margin-bottom: 4px;
+	font-size: 0.72rem;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: #c2cbe4;
+}
+.rz-case-sidebar a {
+	color: rgba(255, 255, 255, 0.92);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+.rz-case-sidebar a:hover {
+	color: #ffffff;
+}
+
+.rz-case-main {
+	line-height: 1.75;
+	color: rgba(255, 255, 255, 0.88);
+}
+.rz-case-tag {
+	display: inline-flex;
+	align-items: center;
+	padding: 5px 10px;
+	margin-bottom: clamp(20px, 3vw, 28px);
+	border-radius: 8px;
+	background: rgba(0, 161, 35, 0.2);
+	border: 1px solid rgba(0, 161, 35, 0.45);
+	font-size: 0.68rem;
+	font-weight: 600;
+	color: rgba(255, 255, 255, 0.95);
+}
+.rz-case-main h4 {
+	margin: 0 0 12px;
+	font-size: 0.88rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: lowercase;
+	color: #c2cbe4;
+}
+.rz-case-main h4:not(:first-of-type) {
+	margin-top: clamp(32px, 4vw, 40px);
+}
+.rz-case-main p {
+	margin: 0 0 12px;
+	font-size: clamp(0.88rem, 1.6vw, 0.98rem);
+}
+.rz-case-main ul {
+	margin: 0;
+	padding-left: 1.25rem;
+	font-size: clamp(0.88rem, 1.6vw, 0.98rem);
+}
+.rz-case-main li {
+	margin-bottom: 8px;
+}
+.rz-case-main li:last-child {
+	margin-bottom: 0;
+}
+
+.rz-case-works__title {
+	margin: 0 0 clamp(28px, 4vw, 40px);
+	font-family: "Playfair Display", Georgia, serif;
+	font-style: italic;
+	font-weight: 600;
+	font-size: clamp(1.5rem, 4vw, 2rem);
+	color: rgba(255, 255, 255, 0.94);
+}
+.rz-case-gallery {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: clamp(16px, 2.5vw, 24px);
+	align-items: stretch;
+}
+.rz-case-gallery a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 200px;
+	padding: 16px;
+	border-radius: 12px;
+	background: rgba(255, 255, 255, 0.06);
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	text-decoration: none;
+	transition: background 0.25s, border-color 0.25s, transform 0.2s;
+}
+.rz-case-gallery a:hover {
+	background: rgba(255, 255, 255, 0.12);
+	border-color: rgba(255, 255, 255, 0.28);
+	transform: translateY(-2px);
+}
+.rz-case-gallery img {
+	display: block;
+	max-width: 100%;
+	max-height: 220px;
+	width: auto;
+	height: auto;
+	object-fit: contain;
+}
+
+@media (max-width: 768px) {
+	.rz-case-split {
+		grid-template-columns: 1fr;
+	}
+	.rz-case-sidebar {
+		order: -1;
+	}
+}

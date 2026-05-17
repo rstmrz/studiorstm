@@ -17,6 +17,8 @@ body {
 }
 
 #HERO.arlo_tm_section {
+	--hero-scroll: 0;
+	--hero-zoom: 0;
 	position: relative;
 	overflow: hidden;
 	background: #000000;
@@ -26,11 +28,57 @@ body {
 	flex-direction: column;
 	width: 100%;
 	box-sizing: border-box;
+	isolation: isolate;
 }
+
+/* Fond vidéo + assombrissement progressif au scroll */
+#HERO.rz-hero--media .rz-hero-media {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+	overflow: hidden;
+}
+#HERO.rz-hero--media .rz-hero-video {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	transform: scale(calc(1.04 + var(--hero-zoom) * 0.1));
+	will-change: transform;
+}
+#HERO.rz-hero--media .rz-hero-media__veil {
+	position: absolute;
+	inset: 0;
+	background: #000;
+	opacity: calc(0.42 + var(--hero-scroll) * 0.48);
+	transition: opacity 0.08s linear;
+}
+#HERO.rz-hero--media .rz-hero-media__fade {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: min(48vh, 460px);
+	background: linear-gradient(
+		to bottom,
+		transparent 0%,
+		rgba(0, 0, 0, 0.35) 38%,
+		#000 100%
+	);
+	opacity: calc(0.55 + var(--hero-scroll) * 0.45);
+	pointer-events: none;
+}
+#HERO.rz-hero--media.is-scrolled-past .rz-hero-media {
+	opacity: calc(1 - var(--hero-scroll) * 0.35);
+}
+
 #HERO .arlo_tm_hero_header_wrap {
 	background: transparent;
 	position: relative;
-	z-index: 1;
+	z-index: 2;
 	box-sizing: border-box;
 	width: 100%;
 	flex: 1 1 auto;
@@ -123,6 +171,36 @@ body {
 #HERO .hero_title .rz-hero-line.serif_italic {
 	line-height: 1.02;
 }
+
+/* Surlignage artisanal (bleu, léger décalage) */
+#HERO .rz-hero-mark {
+	position: relative;
+	display: inline-block;
+	white-space: nowrap;
+}
+#HERO .rz-hero-mark::before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	left: -0.06em;
+	right: -0.1em;
+	bottom: 0.06em;
+	height: 0.42em;
+	background: linear-gradient(
+		102deg,
+		rgba(59, 130, 246, 0.72) 0%,
+		rgba(96, 165, 250, 0.55) 48%,
+		rgba(37, 99, 235, 0.65) 100%
+	);
+	border-radius: 3px 5px 2px 4px;
+	transform: rotate(-1.4deg) skewX(-2.5deg);
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+#HERO .hero_title .rz-hero-line.rz-hero-line--regular {
+	font-family: "Inter", system-ui, sans-serif;
+	font-style: normal;
+	font-weight: 400;
+}
 #HERO .hero_subtitle {
 	opacity: 0;
 	max-width: 34rem;
@@ -174,6 +252,13 @@ body {
 	50% { transform: translateY(6px); opacity: 0.95; }
 }
 @media (prefers-reduced-motion: reduce) {
+	#HERO {
+		--hero-scroll: 0.65;
+		--hero-zoom: 0;
+	}
+	#HERO.rz-hero--media .rz-hero-video {
+		transform: scale(1.04);
+	}
 	#HERO .rz-hero-brand,
 	#HERO .hero_subtitle,
 	#HERO .rz-hero-scroll,

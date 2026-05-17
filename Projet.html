@@ -3,16 +3,25 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>RZ — Projets</title>
+<title>RZ — Références</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="css/plugins.css" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <link rel="stylesheet" type="text/css" href="css/rz-layout.css" />
-<link rel="stylesheet" type="text/css" href="css/rz-hero.css" />
+<link rel="stylesheet" type="text/css" href="css/rz-hero.css?v=2" />
 <link rel="stylesheet" type="text/css" href="css/rz-pages-nav.css" />
-<link rel="stylesheet" type="text/css" href="css/rz-projects-page.css" />
+<link rel="stylesheet" type="text/css" href="css/rz-projects-page.css?v=7" />
+<link rel="stylesheet" type="text/css" href="css/rz-page-loader.css" />
 </head>
 <body>
+
+<div id="rz-page-loader" class="rz-page-loader" role="status" aria-busy="true" aria-live="polite">
+	<div class="rz-page-loader__inner">
+		<video class="rz-page-loader__video" src="img/video/loader.mp4" muted playsinline autoplay loop preload="metadata"></video>
+	</div>
+</div>
+<script src="js/rz-page-loader.js"></script>
+<script src="js/rz-page-loader-nav.js"></script>
 
 <div class="arlo_tm_wrapper_all">
 	<div class="arlo_tm_content">
@@ -20,11 +29,15 @@
 			<div class="rightpart_inner">
 				<nav class="rz-page-nav" aria-label="Navigation principale">
 					<a href="index.html">Accueil</a>
-					<a href="CV.html">CV</a>
 					<a href="Projet.html">Références</a>
 				</nav>
 
-				<section id="HERO" class="arlo_tm_section">
+				<section id="HERO" class="arlo_tm_section rz-hero--media">
+					<div class="rz-hero-media" aria-hidden="true">
+						<video class="rz-hero-video" src="img/video/projet.mp4" muted playsinline autoplay loop preload="metadata" poster="img/hero/fd.jpg"></video>
+						<div class="rz-hero-media__veil"></div>
+						<div class="rz-hero-media__fade"></div>
+					</div>
 					<div class="arlo_tm_hero_header_wrap">
 						<div class="hero_content_main">
 							<div class="rz-hero-brand" id="rz-hero-brand">
@@ -32,11 +45,10 @@
 								<span class="rz-hero-studio-name">studio.rstm</span>
 							</div>
 							<h1 class="hero_title" id="rz-hero-title">
-								<span class="rz-hero-line">Je suis</span>
-								<span class="rz-hero-line serif_italic">créateur de valeur</span>
-								<span class="rz-hero-line">pour les marques.</span>
+								<span class="rz-hero-line">Études de cas,</span>
+								<span class="rz-hero-line serif_italic">missions clients</span>
+								<span class="rz-hero-line serif_italic">et <span class="rz-hero-mark">projets personnels</span>.</span>
 							</h1>
-							<p class="hero_subtitle" id="rz-hero-sub">Études de cas, missions clients et projets personnels.</p>
 							<a class="rz-hero-scroll" href="#RZ_PROJECTS" aria-label="Aller au contenu">
 								<span>Défiler</span>
 								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
@@ -44,12 +56,13 @@
 						</div>
 					</div>
 				</section>
-				<section id="RZ_PROJECTS" class="arlo_tm_section rz-projects-stage" aria-labelledby="rz-projects-heading">
-					<div class="rz-glass-shell">
-						<header class="rz-projects-head">
-							<h2 id="rz-projects-heading" class="rz-block-title-serif serif_italic">Projet</h2>
+				<section id="RZ_PROJECTS" class="arlo_tm_section rz-projects-stage" aria-label="Références">
+					<div class="rz-projects-page-wrap">
+						<header class="rz-block-head rz-projects-display-head">
+							<h2 class="rz-display-title serif_italic">références</h2>
 						</header>
-						<div class="rz-projects-filters" role="region" aria-label="Filtrer les projets">
+						<div class="rz-glass-shell rz-projects-content">
+						<div class="rz-projects-filters" role="region" aria-label="Filtrer les références">
 							<div class="rz-projects-filters-meta">
 								<p class="rz-projects-count" id="rz-projects-count" aria-live="polite"></p>
 								<button type="button" class="rz-filter-reset" id="rz-projects-filter-reset">Réinitialiser</button>
@@ -70,12 +83,16 @@
 									<div class="rz-filter-checks" data-rz-dim="type">
 										<label><input type="checkbox" name="flt-type" value="scolaire" /> Projet scolaire</label>
 										<label><input type="checkbox" name="flt-type" value="client" /> Mission client</label>
+										<label><input type="checkbox" name="flt-type" value="experience" /> Expérience pro.</label>
 										<label><input type="checkbox" name="flt-type" value="personnel" /> Projet personnel</label>
 									</div>
 								</details>
 								<details class="rz-filter-pop">
 									<summary>Entreprise</summary>
 									<div class="rz-filter-checks" data-rz-dim="client">
+										<label><input type="checkbox" name="flt-client" value="adventori" /> ADventori / CoolCo</label>
+										<label><input type="checkbox" name="flt-client" value="cepto" /> Cepto</label>
+										<label><input type="checkbox" name="flt-client" value="permismaster" /> Permis master</label>
 										<label><input type="checkbox" name="flt-client" value="adidas" /> Adidas</label>
 										<label><input type="checkbox" name="flt-client" value="audioptika" /> Audioptika</label>
 										<label><input type="checkbox" name="flt-client" value="beytelattar" /> Beyt el Attar</label>
@@ -83,7 +100,7 @@
 										<label><input type="checkbox" name="flt-client" value="hdg" /> Human design Group</label>
 										<label><input type="checkbox" name="flt-client" value="medcapo" /> Medcapo</label>
 										<label><input type="checkbox" name="flt-client" value="psg" /> PSG</label>
-										<label><input type="checkbox" name="flt-client" value="qamari" /> Qamari</label>
+										<label><input type="checkbox" name="flt-client" value="athari" /> Athari</label>
 										<label><input type="checkbox" name="flt-client" value="sporteo" /> Sportéo</label>
 										<label><input type="checkbox" name="flt-client" value="sunnydollz" /> Sunny Dollz</label>
 										<label><input type="checkbox" name="flt-client" value="swile" /> Swile</label>
@@ -129,9 +146,66 @@
 							<div class="rz-filter-tags" id="rz-filter-tags" hidden aria-label="Filtres actifs"></div>
 						</div>
 						<div class="rz-projects-grid">
+							<article class="rz-glass-card rz-project-card rz-project-card--pending" data-type="experience" data-client="adventori" data-matiere="dataperf" data-tools="google-ads google-analytics google-tag-manager" data-date="20260201" data-year="2026">
+								<p class="rz-project-date rz-project-date--status">
+									<span>2026</span>
+									<span class="rz-status-pill"><span class="rz-status-pill__pulse" aria-hidden="true"></span>En cours</span>
+								</p>
+								<span class="rz-project-type rz-project-type--experience"><img class="rz-project-type__icon" src="img/svg/type-experience.svg" alt="" width="11" height="11" loading="lazy" />Expérience pro.</span>
+								<span class="rz-project-logo-wrap rz-project-logo-wrap--placeholder" aria-hidden="true"><span>AC</span></span>
+								<p class="rz-project-brand">ADventori / CoolCo</p>
+								<h3 class="rz-project-title">Campaign Manager</h3>
+								<div class="rz-project-tools rz-tool-grid">
+									<span class="rz-tool-item">Google Ads</span>
+									<span class="rz-tool-item">Google Analytics</span>
+									<span class="rz-tool-item">Google Tag Manager</span>
+								</div>
+							</article>
+							<article class="rz-glass-card rz-project-card rz-project-card--pending" data-type="client" data-client="cepto" data-matiere="marketing" data-tools="figma notion canva" data-date="20260120" data-year="2026">
+								<p class="rz-project-date rz-project-date--status">
+									<span>2026</span>
+									<span class="rz-status-pill"><span class="rz-status-pill__pulse" aria-hidden="true"></span>En cours</span>
+								</p>
+								<span class="rz-project-type rz-project-type--client"><img class="rz-project-type__icon" src="img/svg/type-client.svg" alt="" width="11" height="11" loading="lazy" />Mission client</span>
+								<span class="rz-project-logo-wrap rz-project-logo-wrap--placeholder" aria-hidden="true"><span>C</span></span>
+								<p class="rz-project-brand">Cepto</p>
+								<h3 class="rz-project-title">Lorem Ipsum</h3>
+								<div class="rz-project-tools rz-tool-grid">
+									<span class="rz-tool-item">Figma</span>
+									<span class="rz-tool-item">Notion</span>
+									<span class="rz-tool-item">Canva</span>
+								</div>
+							</article>
+							<article class="rz-glass-card rz-project-card rz-project-card--pending" data-type="client" data-client="permismaster" data-matiere="marketing" data-tools="meta-ads excel mailchimp" data-date="20260110" data-year="2026">
+								<p class="rz-project-date">2026</p>
+								<span class="rz-project-type rz-project-type--client"><img class="rz-project-type__icon" src="img/svg/type-client.svg" alt="" width="11" height="11" loading="lazy" />Mission client</span>
+								<span class="rz-project-logo-wrap rz-project-logo-wrap--placeholder" aria-hidden="true"><span>PM</span></span>
+								<p class="rz-project-brand">Permis master</p>
+								<h3 class="rz-project-title">Lorem Ipsum</h3>
+								<div class="rz-project-tools rz-tool-grid">
+									<span class="rz-tool-item">Meta Ads</span>
+									<span class="rz-tool-item">Excel</span>
+									<span class="rz-tool-item">Mailchimp</span>
+								</div>
+							</article>
+							<article class="rz-glass-card rz-project-card rz-project-card--pending" data-type="personnel" data-client="athari" data-matiere="ecom" data-tools="shopify wordpress figma" data-date="20260215" data-year="2026">
+								<p class="rz-project-date rz-project-date--status">
+									<span>2026</span>
+									<span class="rz-status-pill"><span class="rz-status-pill__pulse" aria-hidden="true"></span>En cours</span>
+								</p>
+								<span class="rz-project-type rz-project-type--personnel"><img class="rz-project-type__icon" src="img/svg/type-personnel.svg" alt="" width="11" height="11" loading="lazy" />Projet personnel</span>
+								<span class="rz-project-logo-wrap rz-project-logo-wrap--placeholder" aria-hidden="true"><span>AT</span></span>
+								<p class="rz-project-brand">Athari</p>
+								<h3 class="rz-project-title">Offrir une expérience, pas juste un cadeau</h3>
+								<div class="rz-project-tools rz-tool-grid">
+									<span class="rz-tool-item">Shopify</span>
+									<span class="rz-tool-item">WordPress</span>
+									<span class="rz-tool-item">Figma</span>
+								</div>
+							</article>
 							<a class="rz-glass-card rz-project-card" href="projet-zr.html" data-type="personnel" data-client="zr" data-matiere="portfolio" data-tools="figma github framer" data-date="20260115" data-year="2026">
 								<p class="rz-project-date">2026</p>
-								<span class="rz-project-context rz-project-context--personnel">Projet personnel</span>
+								<span class="rz-project-type rz-project-type--personnel"><img class="rz-project-type__icon" src="img/svg/type-personnel.svg" alt="" width="11" height="11" loading="lazy" />Projet personnel</span>
 								<span class="rz-project-logo-wrap"><img class="rz-project-logo" src="img/logo/ZR-logo.png" alt="" width="64" height="64" loading="lazy" /></span>
 								<p class="rz-project-brand">RSTZHR</p>
 								<h3 class="rz-project-title">Création complète de mon identité visuelle et développement web from scratch</h3>
@@ -144,7 +218,7 @@
 							</a>
 							<a class="rz-glass-card rz-project-card" href="projet-adidas.html" data-type="scolaire" data-client="adidas" data-matiere="dataperf" data-tools="tableau google-analytics" data-date="20250920" data-year="2025">
 								<p class="rz-project-date">2025</p>
-								<span class="rz-project-context rz-project-context--scolaire">Projet scolaire</span>
+								<span class="rz-project-type rz-project-type--scolaire"><img class="rz-project-type__icon" src="img/svg/type-scolaire.svg" alt="" width="11" height="11" loading="lazy" />Projet scolaire</span>
 								<span class="rz-project-logo-wrap"><img class="rz-project-logo" src="img/logo/adidas-logo.png" alt="" width="64" height="64" loading="lazy" /></span>
 								<p class="rz-project-brand">Adidas</p>
 								<h3 class="rz-project-title">Optimiser la stratégie produit grâce à la data pour maximiser les ventes et la rentabilité à l’échelle mondiale</h3>
@@ -156,7 +230,7 @@
 							</a>
 							<a class="rz-glass-card rz-project-card" href="projet-swile.html" data-type="scolaire" data-client="swile" data-matiere="dataperf" data-tools="google-analytics google-tag-manager" data-date="20250610" data-year="2025">
 								<p class="rz-project-date">2025</p>
-								<span class="rz-project-context rz-project-context--scolaire">Projet scolaire</span>
+								<span class="rz-project-type rz-project-type--scolaire"><img class="rz-project-type__icon" src="img/svg/type-scolaire.svg" alt="" width="11" height="11" loading="lazy" />Projet scolaire</span>
 								<span class="rz-project-logo-wrap"><img class="rz-project-logo" src="img/logo/swile-logo.png" alt="" width="64" height="64" loading="lazy" /></span>
 								<p class="rz-project-brand">Swile</p>
 								<h3 class="rz-project-title">Renforcer la performance SEO et la cohérence technique du site web</h3>
@@ -168,7 +242,7 @@
 							</a>
 							<a class="rz-glass-card rz-project-card" href="projet-medcapo.html" data-type="client" data-client="medcapo" data-matiere="marketing" data-tools="wordpress canva notion" data-date="20250301" data-year="2025">
 								<p class="rz-project-date">2025</p>
-								<span class="rz-project-context rz-project-context--client">Mission client</span>
+								<span class="rz-project-type rz-project-type--client"><img class="rz-project-type__icon" src="img/svg/type-client.svg" alt="" width="11" height="11" loading="lazy" />Mission client</span>
 								<span class="rz-project-logo-wrap"><img class="rz-project-logo" src="img/logo/medcapo-logo.png" alt="" width="64" height="64" loading="lazy" /></span>
 								<p class="rz-project-brand">Medcapo</p>
 								<h3 class="rz-project-title">Créer une identité impactante pour un média urbain</h3>
@@ -181,7 +255,7 @@
 							</a>
 							<a class="rz-glass-card rz-project-card" href="projet-sunnydollz.html" data-type="client" data-client="sunnydollz" data-matiere="comm" data-tools="canva meta-ads wordpress" data-date="20241115" data-year="2024">
 								<p class="rz-project-date">2024</p>
-								<span class="rz-project-context rz-project-context--client">Mission client</span>
+								<span class="rz-project-type rz-project-type--client"><img class="rz-project-type__icon" src="img/svg/type-client.svg" alt="" width="11" height="11" loading="lazy" />Mission client</span>
 								<span class="rz-project-logo-wrap"><img class="rz-project-logo" src="img/logo/sunnydollz-logo.png" alt="" width="64" height="64" loading="lazy" /></span>
 								<p class="rz-project-brand">Sunny Dollz</p>
 								<h3 class="rz-project-title">Structurer l’offre et sublimer l’image de marque</h3>
@@ -192,22 +266,9 @@
 								</div>
 								<span class="rz-project-more" aria-hidden="true">→</span>
 							</a>
-							<a class="rz-glass-card rz-project-card" href="projet-qamari.html" data-type="client" data-client="qamari" data-matiere="ecom" data-tools="shopify wordpress figma" data-date="20241001" data-year="2024">
-								<p class="rz-project-date">2024</p>
-								<span class="rz-project-context rz-project-context--client">Mission client</span>
-								<span class="rz-project-logo-wrap"><img class="rz-project-logo" src="img/logo/qamari-logo.png" alt="" width="64" height="64" loading="lazy" /></span>
-								<p class="rz-project-brand">Qamari</p>
-								<h3 class="rz-project-title">Offrir une expérience, pas juste un cadeau</h3>
-								<div class="rz-project-tools rz-tool-grid">
-									<span class="rz-tool-item rz-tool-item--auto">Shopify</span>
-									<span class="rz-tool-item rz-tool-item--know">WordPress</span>
-									<span class="rz-tool-item rz-tool-item--auto">Figma</span>
-								</div>
-								<span class="rz-project-more" aria-hidden="true">→</span>
-							</a>
 							<a class="rz-glass-card rz-project-card" href="projet-audioptika.html" data-type="client" data-client="audioptika" data-matiere="brand" data-tools="figma photoshop canva" data-date="20240801" data-year="2024">
 								<p class="rz-project-date">2024</p>
-								<span class="rz-project-context rz-project-context--client">Mission client</span>
+								<span class="rz-project-type rz-project-type--client"><img class="rz-project-type__icon" src="img/svg/type-client.svg" alt="" width="11" height="11" loading="lazy" />Mission client</span>
 								<span class="rz-project-logo-wrap"><img class="rz-project-logo" src="img/logo/audioptika-logo.png" alt="" width="64" height="64" loading="lazy" /></span>
 								<p class="rz-project-brand">Audioptika</p>
 								<h3 class="rz-project-title">Créer une identité visuelle forte et cohérente</h3>
@@ -220,7 +281,7 @@
 							</a>
 							<a class="rz-glass-card rz-project-card" href="projet-beytelattar.html" data-type="client" data-client="beytelattar" data-matiere="ecom" data-tools="shopify figma photoshop" data-date="20240601" data-year="2024">
 								<p class="rz-project-date">2024</p>
-								<span class="rz-project-context rz-project-context--client">Mission client</span>
+								<span class="rz-project-type rz-project-type--client"><img class="rz-project-type__icon" src="img/svg/type-client.svg" alt="" width="11" height="11" loading="lazy" />Mission client</span>
 								<span class="rz-project-logo-wrap"><img class="rz-project-logo" src="img/logo/beytelattar-logo.png" alt="" width="64" height="64" loading="lazy" /></span>
 								<p class="rz-project-brand">Beyt el Attar</p>
 								<h3 class="rz-project-title">Créer une maison d’encens élégante, ancrée dans la tradition</h3>
@@ -231,9 +292,9 @@
 								</div>
 								<span class="rz-project-more" aria-hidden="true">→</span>
 							</a>
-							<a class="rz-glass-card rz-project-card" href="projet-cirteus.html" data-type="client" data-client="cirteus" data-matiere="comm" data-tools="wordpress linkedin-ads notion" data-date="20240201" data-year="2024">
+							<a class="rz-glass-card rz-project-card" href="projet-cirteus.html" data-type="experience" data-client="cirteus" data-matiere="comm" data-tools="wordpress linkedin-ads notion" data-date="20240201" data-year="2024">
 								<p class="rz-project-date">2024</p>
-								<span class="rz-project-context rz-project-context--client">Mission client</span>
+								<span class="rz-project-type rz-project-type--experience"><img class="rz-project-type__icon" src="img/svg/type-experience.svg" alt="" width="11" height="11" loading="lazy" />Expérience pro.</span>
 								<span class="rz-project-logo-wrap"><img class="rz-project-logo" src="img/logo/cirteus-logo.webp" alt="" width="64" height="64" loading="lazy" /></span>
 								<p class="rz-project-brand">Cirtéus</p>
 								<h3 class="rz-project-title">Renforcer la communication interne et externe, valoriser les collaborateurs et l’expertise métier, visibilité sur les réseaux pro</h3>
@@ -244,9 +305,9 @@
 								</div>
 								<span class="rz-project-more" aria-hidden="true">→</span>
 							</a>
-							<a class="rz-glass-card rz-project-card" href="projet-hdg.html" data-type="client" data-client="hdg" data-matiere="marketing" data-tools="matomo wordpress" data-date="20231201" data-year="2023">
+							<a class="rz-glass-card rz-project-card" href="projet-hdg.html" data-type="experience" data-client="hdg" data-matiere="marketing" data-tools="matomo wordpress" data-date="20231201" data-year="2023">
 								<p class="rz-project-date">2023</p>
-								<span class="rz-project-context rz-project-context--client">Mission client</span>
+								<span class="rz-project-type rz-project-type--experience"><img class="rz-project-type__icon" src="img/svg/type-experience.svg" alt="" width="11" height="11" loading="lazy" />Expérience pro.</span>
 								<span class="rz-project-logo-wrap"><img class="rz-project-logo" src="img/logo/hdg-logo.png" alt="" width="64" height="64" loading="lazy" /></span>
 								<p class="rz-project-brand">Human design Group</p>
 								<h3 class="rz-project-title">Structurer, valoriser et activer la marque par le design, le contenu et la data</h3>
@@ -256,9 +317,9 @@
 								</div>
 								<span class="rz-project-more" aria-hidden="true">→</span>
 							</a>
-							<a class="rz-glass-card rz-project-card" href="projet-younishop.html" data-type="client" data-client="younishop" data-matiere="marketing" data-tools="meta-ads google-ads canva" data-date="20230901" data-year="2023">
+							<a class="rz-glass-card rz-project-card" href="projet-younishop.html" data-type="experience" data-client="younishop" data-matiere="marketing" data-tools="meta-ads google-ads canva" data-date="20230901" data-year="2023">
 								<p class="rz-project-date">2023</p>
-								<span class="rz-project-context rz-project-context--client">Mission client</span>
+								<span class="rz-project-type rz-project-type--experience"><img class="rz-project-type__icon" src="img/svg/type-experience.svg" alt="" width="11" height="11" loading="lazy" />Expérience pro.</span>
 								<span class="rz-project-logo-wrap"><img class="rz-project-logo" src="img/logo/younishop-logo.png" alt="" width="64" height="64" loading="lazy" /></span>
 								<p class="rz-project-brand">Younishop</p>
 								<h3 class="rz-project-title">Harmoniser l’univers visuel et digital de la marque</h3>
@@ -271,7 +332,7 @@
 							</a>
 							<a class="rz-glass-card rz-project-card" href="projet-psg.html" data-type="scolaire" data-client="psg" data-matiere="brand" data-tools="canva photoshop illustrator" data-date="20230601" data-year="2023">
 								<p class="rz-project-date">2023</p>
-								<span class="rz-project-context rz-project-context--scolaire">Projet scolaire</span>
+								<span class="rz-project-type rz-project-type--scolaire"><img class="rz-project-type__icon" src="img/svg/type-scolaire.svg" alt="" width="11" height="11" loading="lazy" />Projet scolaire</span>
 								<span class="rz-project-logo-wrap"><img class="rz-project-logo" src="img/logo/psg-logo.png" alt="" width="64" height="64" loading="lazy" /></span>
 								<p class="rz-project-brand">PSG</p>
 								<h3 class="rz-project-title">Création graphique fictive autour d’un match de Champions League</h3>
@@ -284,7 +345,7 @@
 							</a>
 							<a class="rz-glass-card rz-project-card" href="projet-sporteo.html" data-type="scolaire" data-client="sporteo" data-matiere="marketing" data-tools="google-analytics wordpress" data-date="20230301" data-year="2023">
 								<p class="rz-project-date">2023</p>
-								<span class="rz-project-context rz-project-context--scolaire">Projet scolaire</span>
+								<span class="rz-project-type rz-project-type--scolaire"><img class="rz-project-type__icon" src="img/svg/type-scolaire.svg" alt="" width="11" height="11" loading="lazy" />Projet scolaire</span>
 								<span class="rz-project-logo-wrap"><img class="rz-project-logo" src="img/logo/Sportéo.png" alt="" width="64" height="64" loading="lazy" /></span>
 								<p class="rz-project-brand">Sportéo</p>
 								<h3 class="rz-project-title">Structurer l’écosystème digital pour améliorer le référencement naturel et booster les performances e-commerce</h3>
@@ -296,7 +357,7 @@
 							</a>
 							<a class="rz-glass-card rz-project-card" href="projet-taj.html" data-type="scolaire" data-client="taj" data-matiere="comm" data-tools="shopify canva gemini" data-date="20230115" data-year="2023">
 								<p class="rz-project-date">2023</p>
-								<span class="rz-project-context rz-project-context--scolaire">Projet scolaire</span>
+								<span class="rz-project-type rz-project-type--scolaire"><img class="rz-project-type__icon" src="img/svg/type-scolaire.svg" alt="" width="11" height="11" loading="lazy" />Projet scolaire</span>
 								<span class="rz-project-logo-wrap"><img class="rz-project-logo" src="img/portfolio/TAJ.png" alt="" width="64" height="64" loading="lazy" /></span>
 								<p class="rz-project-brand">Maison TAJ</p>
 								<h3 class="rz-project-title">Quand l’artisanat rencontre le numérique</h3>
@@ -309,11 +370,30 @@
 							</a>
 						</div>
 						<p class="rz-projects-empty" id="rz-projects-empty" hidden>Aucun projet ne correspond aux filtres.</p>
+						</div>
 					</div>
 				</section>
 				<footer id="RZ_FOOTER" class="arlo_tm_section rz-site-footer">
 					<div class="rz-footer-inner">
-						<p class="rz-footer-copy">© <span id="rz-footer-year"></span> Rostom Zehhar — Portfolio</p>
+						<nav class="rz-footer-nav" aria-label="Liens du site">
+							<a class="rz-cv-ed__tag-btn" href="index.html">
+								<img class="rz-cv-ed__tag-btn-icon" src="img/svg/home.svg" alt="" width="14" height="14" loading="lazy" />
+								<span>Accueil</span>
+							</a>
+							<a class="rz-cv-ed__tag-btn" href="Projet.html">
+								<img class="rz-cv-ed__tag-btn-icon" src="img/svg/type-client.svg" alt="" width="14" height="14" loading="lazy" />
+								<span>Références</span>
+							</a>
+							<a class="rz-cv-ed__tag-btn rz-cv-ed__tag-btn--cv" href="cv.pdf" download="cv.pdf" aria-label="Télécharger le CV (PDF)">
+								<img class="rz-cv-ed__tag-btn-icon" src="img/svg/download.svg" alt="" width="14" height="14" loading="lazy" />
+								<span>Télécharger le CV</span>
+							</a>
+							<a class="rz-cv-ed__tag-btn" href="https://www.linkedin.com/in/rstmrz" target="_blank" rel="noopener noreferrer">
+								<img class="rz-cv-ed__tag-btn-icon" src="img/svg/linkedin-svgrepo-com.svg" alt="" width="14" height="14" loading="lazy" />
+								<span>LinkedIn</span>
+							</a>
+						</nav>
+						<p class="rz-footer-copy">© 2026 Rostom Zehhar</p>
 					</div>
 				</footer>
 
@@ -330,7 +410,7 @@
 	if (!grid) return;
 
 	function getCards() {
-		return Array.prototype.slice.call(grid.querySelectorAll("a.rz-project-card"));
+		return Array.prototype.slice.call(grid.querySelectorAll(".rz-project-card"));
 	}
 
 	var cards = getCards();
@@ -505,13 +585,14 @@
 	applyFilters();
 })();
 </script>
+<script src="js/rz-hero-scroll.js"></script>
 <script>
 (function () {
 	var brand = document.getElementById("rz-hero-brand");
 	var titleEl = document.getElementById("rz-hero-title");
 	var sub = document.getElementById("rz-hero-sub");
 	var scrollL = document.querySelector("#HERO .rz-hero-scroll");
-	if (!brand || !titleEl || !sub || !scrollL) return;
+	if (!brand || !titleEl || !scrollL) return;
 
 	var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -520,18 +601,20 @@
 		setTimeout(function () {
 			titleEl.classList.add("rz-hero-title--ready");
 		}, 380);
-		setTimeout(function () {
-			sub.classList.add("rz-hero-sub--in");
-		}, 900);
+		if (sub) {
+			setTimeout(function () {
+				sub.classList.add("rz-hero-sub--in");
+			}, 900);
+		}
 		setTimeout(function () {
 			scrollL.classList.add("rz-hero-scroll--in");
-		}, 1480);
+		}, sub ? 1480 : 900);
 	}
 
 	if (reduce) {
 		brand.classList.add("rz-hero-brand--in");
 		titleEl.classList.add("rz-hero-title--ready");
-		sub.classList.add("rz-hero-sub--in");
+		if (sub) sub.classList.add("rz-hero-sub--in");
 		scrollL.classList.add("rz-hero-scroll--in");
 	} else if (document.readyState === "loading") {
 		document.addEventListener("DOMContentLoaded", reveal);

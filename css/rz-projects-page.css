@@ -1,37 +1,66 @@
-/* --- Projets (cartes entreprise, même glass que le bento) --- */
+/* --- Page Références (Projet.html) --- */
 #RZ_PROJECTS.rz-projects-stage {
 	position: relative;
 	box-sizing: border-box;
-	padding: clamp(28px, 5vw, 64px) clamp(16px, 4vw, 40px) clamp(56px, 9vw, 100px);
+	padding: 0;
 	font-family: "Inter", system-ui, sans-serif;
 	color: #fff;
 	background: #000000;
 	overflow-x: hidden;
+	float: none;
+	clear: both;
+	width: 100%;
 }
-#RZ_PROJECTS .rz-projects-head {
-	max-width: 100%;
-	margin-bottom: clamp(12px, 2vw, 18px);
+
+#RZ_PROJECTS .rz-projects-page-wrap {
+	position: relative;
+	z-index: 1;
+	max-width: 1120px;
+	margin: 0 auto;
+	padding: clamp(48px, 8vw, 96px) clamp(20px, 5vw, 48px) clamp(64px, 10vw, 120px);
+	box-sizing: border-box;
+}
+
+#RZ_PROJECTS .rz-projects-display-head {
 	text-align: center;
+	margin: 0 0 clamp(48px, 7vw, 72px);
+	padding: 0;
 }
+
+#RZ_PROJECTS .rz-projects-content.rz-glass-shell {
+	position: relative;
+	z-index: 1;
+	max-width: 100%;
+	margin: 0;
+	padding: 0;
+	display: block;
+	overflow: visible;
+	background: transparent;
+	border: none;
+	box-shadow: none;
+}
+
 #RZ_PROJECTS .rz-projects-filters {
-	margin-bottom: clamp(16px, 2.2vw, 24px);
-	padding: clamp(12px, 1.8vw, 16px) clamp(14px, 2vw, 18px);
+	margin-bottom: clamp(28px, 4vw, 40px);
+	padding: clamp(16px, 2.2vw, 22px) clamp(16px, 2.4vw, 22px);
 	border-radius: 6px;
 	background: rgba(255, 255, 255, 0.06);
 	border: 1px solid rgba(255, 255, 255, 0.14);
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
+	gap: 12px;
 	overflow: visible;
 	position: relative;
 	z-index: 4;
 }
+
 #RZ_PROJECTS .rz-projects-count {
 	margin: 0;
 	font-size: 0.72rem;
 	font-weight: 600;
 	color: rgba(255, 255, 255, 0.55);
 }
+
 #RZ_PROJECTS .rz-projects-filters-meta {
 	display: flex;
 	flex-wrap: wrap;
@@ -39,6 +68,7 @@
 	justify-content: space-between;
 	gap: 8px 12px;
 }
+
 #RZ_PROJECTS .rz-filter-bar--multi {
 	display: flex;
 	flex-wrap: nowrap;
@@ -47,19 +77,22 @@
 	position: relative;
 	min-height: 32px;
 }
+
 #RZ_PROJECTS .rz-filter-pop {
 	flex: 1 1 0;
 	min-width: 0;
-	border-radius: 4px;
+	border-radius: 8px;
 	border: 1px solid rgba(255, 255, 255, 0.18);
 	background: rgba(12, 16, 24, 0.5);
 	overflow: visible;
 	position: relative;
 	z-index: 1;
 }
+
 #RZ_PROJECTS .rz-filter-pop[open] {
 	z-index: 40;
 }
+
 #RZ_PROJECTS .rz-filter-checks {
 	position: absolute;
 	left: 0;
@@ -72,47 +105,53 @@
 	gap: 6px;
 	max-height: min(240px, 50vh);
 	overflow-y: auto;
-	border-radius: 4px;
+	border-radius: 10px;
 	border: 1px solid rgba(255, 255, 255, 0.16);
 	background: rgba(14, 18, 28, 0.97);
 	box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
 	-webkit-backdrop-filter: blur(12px);
 	backdrop-filter: blur(12px);
 }
+
 #RZ_PROJECTS .rz-filter-pop > summary {
 	list-style: none;
 	cursor: pointer;
-	font-size: 0.58rem;
+	font-size: 0.52rem;
 	font-weight: 700;
 	letter-spacing: 0.05em;
 	text-transform: uppercase;
-	padding: 5px 8px;
+	padding: 4px 7px;
 	color: rgba(255, 255, 255, 0.82);
 	background: rgba(255, 255, 255, 0.04);
 	transition: background 0.15s;
-	border-radius: 3px;
+	border-radius: 6px;
 }
+
 #RZ_PROJECTS .rz-filter-pop > summary::-webkit-details-marker {
 	display: none;
 }
+
 #RZ_PROJECTS .rz-filter-pop[open] > summary {
 	background: rgba(109, 135, 168, 0.25);
 }
+
 #RZ_PROJECTS .rz-filter-checks label {
 	display: flex;
 	align-items: center;
-	gap: 8px;
-	font-size: 0.68rem;
+	gap: 6px;
+	font-size: 0.62rem;
 	font-weight: 500;
 	color: rgba(255, 255, 255, 0.88);
 	cursor: pointer;
 }
+
 #RZ_PROJECTS .rz-filter-checks input {
 	accent-color: #6d87a8;
-	width: 14px;
-	height: 14px;
+	width: 12px;
+	height: 12px;
 	flex-shrink: 0;
 }
+
 #RZ_PROJECTS .rz-filter-reset {
 	align-self: flex-end;
 	appearance: none;
@@ -127,36 +166,42 @@
 	cursor: pointer;
 	transition: color 0.18s, border-color 0.18s, background 0.18s;
 }
+
 #RZ_PROJECTS .rz-filter-reset:hover {
 	color: #fff;
 	border-color: rgba(255, 255, 255, 0.38);
 	background: rgba(255, 255, 255, 0.1);
 }
+
 #RZ_PROJECTS .rz-filter-tags {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	gap: 8px;
+	gap: 5px;
 	margin-top: 6px;
 	min-height: 0;
 }
+
 #RZ_PROJECTS .rz-filter-tags[hidden] {
 	display: none !important;
 }
+
 #RZ_PROJECTS .rz-filter-tag {
 	display: inline-flex;
 	align-items: center;
-	gap: 2px;
+	gap: 4px;
 	max-width: 100%;
-	padding: 5px 4px 5px 10px;
-	border-radius: 999px;
-	font-size: 0.65rem;
-	font-weight: 600;
-	color: rgba(255, 255, 255, 0.94);
-	background: rgba(109, 135, 168, 0.3);
-	border: 1px solid rgba(255, 255, 255, 0.22);
+	padding: 4px 5px 4px 8px;
+	border-radius: 4px;
+	font-size: 0.58rem;
+	font-weight: 500;
+	line-height: 1.2;
+	color: rgba(255, 255, 255, 0.92);
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.16);
 	animation: rzFilterTagIn 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
 @keyframes rzFilterTagIn {
 	from {
 		opacity: 0;
@@ -167,22 +212,26 @@
 		transform: none;
 	}
 }
+
 #RZ_PROJECTS .rz-filter-tag-label {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	max-width: min(220px, 72vw);
 }
+
 #RZ_PROJECTS .rz-filter-tag-remove {
 	appearance: none;
 	border: none;
 	background: transparent;
-	color: rgba(255, 255, 255, 0.55);
-	font-size: 1.1rem;
+	color: rgba(255, 255, 255, 0.45);
+	font-size: 0.85rem;
 	line-height: 1;
-	width: 28px;
-	height: 28px;
-	border-radius: 50%;
+	width: 14px;
+	height: 14px;
+	margin: 0 -2px 0 0;
+	padding: 0;
+	border-radius: 2px;
 	cursor: pointer;
 	display: inline-flex;
 	align-items: center;
@@ -190,37 +239,54 @@
 	transition: color 0.15s, background 0.15s;
 	flex-shrink: 0;
 }
+
 #RZ_PROJECTS .rz-filter-tag-remove:hover {
 	color: #fff;
 	background: rgba(255, 255, 255, 0.12);
 }
+
+/* Grille : 4 colonnes desktop, 2 colonnes mobile/tablette */
 #RZ_PROJECTS .rz-projects-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	display: grid !important;
+	grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
 	grid-auto-rows: 1fr;
-	gap: clamp(14px, 2vw, 22px);
+	gap: 14px;
 	align-items: stretch;
+	width: 100%;
+	max-width: 100%;
+	float: none;
+	clear: both;
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
-#RZ_PROJECTS a.rz-project-card {
+
+#RZ_PROJECTS .rz-project-card {
 	display: flex;
 	flex-direction: column;
+	align-items: flex-start;
 	text-align: left;
 	text-decoration: none;
 	color: inherit;
 	position: relative;
-	padding: clamp(18px, 2.2vw, 24px);
-	padding-bottom: 36px;
+	padding: 14px 14px 30px;
 	height: 100%;
-	min-height: 300px;
+	min-height: 248px;
 	box-sizing: border-box;
 	background: rgba(255, 255, 255, 0.12);
 	backdrop-filter: blur(22px);
 	-webkit-backdrop-filter: blur(22px);
 	transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.2s, background 0.2s;
+	float: none;
+	width: auto;
+	max-width: none;
+	cursor: pointer;
 }
-#RZ_PROJECTS a.rz-project-card.rz-project-card--hidden {
-	display: none;
+
+#RZ_PROJECTS .rz-project-card.rz-project-card--hidden {
+	display: none !important;
 }
+
 #RZ_PROJECTS a.rz-project-card:hover {
 	transform: translateY(-3px);
 	background: rgba(255, 255, 255, 0.22);
@@ -229,12 +295,32 @@
 		0 16px 42px rgba(0, 0, 0, 0.22),
 		inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
+
+#RZ_PROJECTS .rz-project-card--pending {
+	cursor: default;
+	opacity: 0.96;
+}
+
+#RZ_PROJECTS .rz-project-card--pending:hover {
+	transform: none;
+	background: rgba(255, 255, 255, 0.12);
+	border-color: rgba(255, 255, 255, 0.22);
+	box-shadow:
+		0 4px 24px rgba(0, 0, 0, 0.18),
+		inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+#RZ_PROJECTS .rz-project-card--pending .rz-project-more {
+	display: none;
+}
+
 #RZ_PROJECTS .rz-project-card__top {
 	display: none;
 }
+
 #RZ_PROJECTS .rz-project-logo-wrap {
-	width: 64px;
-	height: 64px;
+	width: 52px;
+	height: 52px;
 	border-radius: 0;
 	background: transparent;
 	border: none;
@@ -245,15 +331,17 @@
 	padding: 0;
 	box-sizing: border-box;
 	overflow: hidden;
-	margin-bottom: 10px;
+	margin-bottom: 8px;
 }
+
 #RZ_PROJECTS .rz-project-logo {
 	width: 100%;
 	height: 100%;
-	object-fit: cover;
+	object-fit: contain;
 	object-position: center;
 	display: block;
 }
+
 #RZ_PROJECTS .rz-project-date {
 	margin: 0 0 4px;
 	font-size: 0.58rem;
@@ -262,42 +350,143 @@
 	text-transform: uppercase;
 	color: rgba(255, 255, 255, 0.5);
 }
-#RZ_PROJECTS .rz-project-context {
-	margin: 0 0 10px;
-	display: block;
-	font-size: 0.5rem;
-	font-weight: 700;
-	letter-spacing: 0.1em;
+
+#RZ_PROJECTS .rz-project-date--status {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	width: 100%;
+}
+
+@keyframes rzStatusPulseOrange {
+	0% {
+		box-shadow: 0 0 0 0 rgba(251, 146, 60, 0.45);
+		opacity: 1;
+	}
+	55% {
+		box-shadow: 0 0 0 8px rgba(251, 146, 60, 0);
+		opacity: 0.92;
+	}
+	100% {
+		box-shadow: 0 0 0 0 rgba(251, 146, 60, 0);
+		opacity: 1;
+	}
+}
+
+#RZ_PROJECTS .rz-status-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 4px 10px 4px 8px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.06);
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	font-size: 0.52rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
 	text-transform: uppercase;
-	color: rgba(255, 255, 255, 0.42);
+	color: rgba(255, 255, 255, 0.88);
+	line-height: 1;
 }
-#RZ_PROJECTS .rz-project-context--scolaire {
-	color: rgba(196, 210, 255, 0.85);
+
+#RZ_PROJECTS .rz-status-pill__pulse {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	flex-shrink: 0;
+	background: linear-gradient(145deg, #fb923c, #ea580c);
+	box-shadow: 0 0 6px rgba(251, 146, 60, 0.5);
+	animation: rzStatusPulseOrange 2.2s ease-out infinite;
 }
-#RZ_PROJECTS .rz-project-context--client {
-	color: rgba(167, 243, 208, 0.9);
+
+#RZ_PROJECTS .rz-project-logo-wrap--placeholder {
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	border-radius: 10px;
+	font-size: 0.9rem;
+	font-weight: 700;
+	color: rgba(255, 255, 255, 0.55);
+	letter-spacing: 0.06em;
 }
-#RZ_PROJECTS .rz-project-context--personnel {
-	color: rgba(253, 230, 138, 0.9);
-}
-#RZ_PROJECTS .rz-project-brand {
+
+/* Étiquette type : mission client / scolaire / personnel / expérience */
+#RZ_PROJECTS .rz-project-type {
+	display: inline-flex;
+	align-items: center;
+	align-self: flex-start;
+	width: fit-content;
+	max-width: 100%;
+	gap: 4px;
 	margin: 0 0 8px;
+	padding: 3px 7px;
+	border-radius: 7px;
+	font-size: 0.48rem;
+	font-weight: 600;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	line-height: 1.2;
+	white-space: nowrap;
+}
+#RZ_PROJECTS .rz-project-type__icon {
+	display: block;
+	width: 9px;
+	height: 9px;
+	flex-shrink: 0;
+}
+#RZ_PROJECTS .rz-project-type--client {
+	background: rgba(74, 222, 128, 0.14);
+	border: 1px solid rgba(74, 222, 128, 0.42);
+	color: rgba(167, 243, 208, 0.98);
+}
+#RZ_PROJECTS .rz-project-type--client .rz-project-type__icon {
+	filter: brightness(0) saturate(100%) invert(84%) sepia(12%) saturate(627%) hue-rotate(93deg) brightness(103%) contrast(92%);
+}
+#RZ_PROJECTS .rz-project-type--scolaire {
+	background: rgba(147, 165, 255, 0.14);
+	border: 1px solid rgba(147, 165, 255, 0.42);
+	color: rgba(196, 210, 255, 0.98);
+}
+#RZ_PROJECTS .rz-project-type--scolaire .rz-project-type__icon {
+	filter: brightness(0) saturate(100%) invert(88%) sepia(8%) saturate(1205%) hue-rotate(196deg) brightness(101%) contrast(96%);
+}
+#RZ_PROJECTS .rz-project-type--personnel {
+	background: rgba(250, 204, 21, 0.12);
+	border: 1px solid rgba(250, 204, 21, 0.4);
+	color: rgba(253, 230, 138, 0.98);
+}
+#RZ_PROJECTS .rz-project-type--personnel .rz-project-type__icon {
+	filter: brightness(0) saturate(100%) invert(93%) sepia(27%) saturate(666%) hue-rotate(358deg) brightness(104%) contrast(96%);
+}
+#RZ_PROJECTS .rz-project-type--experience {
+	background: rgba(194, 203, 228, 0.14);
+	border: 1px solid rgba(194, 203, 228, 0.42);
+	color: rgba(194, 203, 228, 0.98);
+}
+#RZ_PROJECTS .rz-project-type--experience .rz-project-type__icon {
+	filter: brightness(0) saturate(100%) invert(88%) sepia(6%) saturate(426%) hue-rotate(196deg) brightness(99%) contrast(92%);
+}
+
+#RZ_PROJECTS .rz-project-brand {
+	margin: 0 0 6px;
 	font-size: 0.58rem;
 	font-weight: 700;
 	letter-spacing: 0.14em;
 	text-transform: uppercase;
 	color: rgba(255, 255, 255, 0.88);
 }
+
 #RZ_PROJECTS .rz-project-title {
-	margin: 0 0 10px;
-	font-size: clamp(0.66rem, 0.95vw, 0.76rem);
+	margin: 0 0 8px;
+	font-size: 0.68rem;
 	font-weight: 700;
-	line-height: 1.3;
+	line-height: 1.35;
 	letter-spacing: -0.015em;
 	color: #fff;
 	flex: 1;
 	min-height: 0;
 }
+
 #RZ_PROJECTS .rz-project-tools {
 	margin-top: auto;
 	padding-top: 6px;
@@ -308,29 +497,51 @@
 	align-content: flex-end;
 	gap: 4px 6px;
 }
+
 #RZ_PROJECTS .rz-project-tools .rz-tool-item {
 	flex: 0 0 auto;
 	white-space: nowrap;
 }
-#RZ_PROJECTS .rz-tool-item {
+
+/* Outils : formalisme index (#RZ_CV_EDITORIAL .rz-tool-item), plus petit, blanc neutre */
+#RZ_PROJECTS .rz-project-tools .rz-tool-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+}
+
+#RZ_PROJECTS .rz-project-tools .rz-tool-item,
+#RZ_PROJECTS .rz-project-tools .rz-tool-item--auto,
+#RZ_PROJECTS .rz-project-tools .rz-tool-item--deep,
+#RZ_PROJECTS .rz-project-tools .rz-tool-item--know,
+#RZ_PROJECTS .rz-project-tools .rz-tool-item--learn {
 	display: inline-flex;
 	align-items: center;
 	gap: 4px;
-	padding: 2px 7px;
-	border-radius: 5px;
-	background: rgba(255, 255, 255, 0.08);
-	border: 1px solid rgba(255, 255, 255, 0.14);
-	font-size: 0.52rem;
+	padding: 4px 8px;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.08) !important;
+	border: 1px solid rgba(255, 255, 255, 0.16) !important;
+	font-size: 0.58rem;
 	font-weight: 500;
-	color: rgba(255, 255, 255, 0.92);
+	color: rgba(255, 255, 255, 0.92) !important;
 }
-#RZ_PROJECTS .rz-tool-grid {
-	gap: 6px;
+
+#RZ_PROJECTS .rz-project-tools .rz-tool-icon {
+	width: 11px;
+	height: 11px;
+	object-fit: contain;
+	flex-shrink: 0;
 }
+
+#RZ_PROJECTS .rz-project-tools .rz-tool-icon.rz-tool-icon--mono {
+	filter: brightness(0) invert(1);
+}
+
 #RZ_PROJECTS .rz-project-more {
 	position: absolute;
-	bottom: 14px;
-	right: 16px;
+	bottom: 12px;
+	right: 14px;
 	display: block;
 	font-size: 1.15rem;
 	font-weight: 500;
@@ -341,10 +552,13 @@
 	transition: color 0.2s, transform 0.2s;
 	pointer-events: none;
 }
-#RZ_PROJECTS a.rz-project-card:hover .rz-project-more {
+
+#RZ_PROJECTS a.rz-project-card:hover .rz-project-more,
+#RZ_PROJECTS .rz-project-card:not(.rz-project-card--pending):hover .rz-project-more {
 	color: rgba(255, 255, 255, 0.95);
 	transform: translateX(2px);
 }
+
 #RZ_PROJECTS .rz-project-card--placeholder {
 	display: flex;
 	flex-direction: column;
@@ -356,6 +570,7 @@
 	border-color: rgba(255, 255, 255, 0.28);
 	background: rgba(255, 255, 255, 0.04);
 }
+
 #RZ_PROJECTS .rz-project-plus {
 	font-size: 2rem;
 	font-weight: 300;
@@ -363,11 +578,13 @@
 	color: rgba(255, 255, 255, 0.45);
 	margin-bottom: 8px;
 }
+
 #RZ_PROJECTS .rz-project-placeholder-label {
 	font-size: 0.82rem;
 	font-weight: 600;
 	color: rgba(255, 255, 255, 0.55);
 }
+
 #RZ_PROJECTS .rz-projects-empty {
 	margin: 14px 0 0;
 	text-align: center;
@@ -375,8 +592,43 @@
 	font-weight: 500;
 	color: rgba(255, 255, 255, 0.52);
 }
+
+@media (max-width: 900px) {
+	#RZ_PROJECTS .rz-projects-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+		gap: 12px;
+	}
+
+	#RZ_PROJECTS .rz-project-card {
+		min-height: 228px;
+		padding: 12px 12px 28px;
+	}
+
+	#RZ_PROJECTS .rz-project-logo-wrap {
+		width: 48px;
+		height: 48px;
+	}
+}
+
 @media (max-width: 600px) {
 	#RZ_PROJECTS .rz-filter-bar--multi {
 		flex-direction: column;
 		align-items: stretch;
 	}
+
+	#RZ_PROJECTS .rz-display-title {
+		font-size: clamp(2.5rem, 12vw, 4.5rem);
+	}
+
+	#RZ_PROJECTS .rz-projects-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+	}
+
+	#RZ_PROJECTS .rz-project-card {
+		min-height: 210px;
+	}
+
+	#RZ_PROJECTS .rz-project-title {
+		font-size: 0.62rem;
+	}
+}

@@ -1,5 +1,5 @@
 /**
- * Ferme l’overlay #rz-page-loader après window "load" et au moins ~3 s depuis le début de navigation.
+ * Ferme l’overlay #rz-page-loader après window "load" et au moins ~1,5 s depuis le début de navigation.
  * Vanilla : ne dépend pas de jQuery.
  */
 (function () {
@@ -13,7 +13,7 @@
 	document.documentElement.classList.add("rz-page-loader-active");
 	document.body.classList.add("rz-page-loader-active");
 
-	var MIN_MS = 3000;
+	var MIN_MS = 1500;
 	var video = root.querySelector(".rz-page-loader__video");
 
 	function navStartTime() {

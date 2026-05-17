@@ -31,6 +31,48 @@ body {
 	justify-content: space-between;
 	gap: 12px 20px;
 }
+#RZ_FOOTER .rz-footer-nav {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	margin: 0 0 10px;
+}
+#RZ_FOOTER .rz-cv-ed__tag-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 7px;
+	flex-shrink: 0;
+	padding: 7px 12px;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.16);
+	font-size: 0.72rem;
+	font-weight: 500;
+	letter-spacing: 0.02em;
+	text-decoration: none;
+	color: rgba(255, 255, 255, 0.92);
+	white-space: nowrap;
+	transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+#RZ_FOOTER .rz-cv-ed__tag-btn-icon {
+	display: block;
+	width: 14px;
+	height: 14px;
+	flex-shrink: 0;
+	filter: brightness(0) invert(1);
+	transition: filter 0.25s ease;
+}
+#RZ_FOOTER .rz-cv-ed__tag-btn:hover {
+	background: #ffffff;
+	border-color: #ffffff;
+	color: #000000;
+}
+#RZ_FOOTER .rz-cv-ed__tag-btn:hover .rz-cv-ed__tag-btn-icon {
+	filter: brightness(0);
+}
 #RZ_FOOTER .rz-footer-copy {
 	margin: 0;
 	font-size: 0.78rem;
@@ -52,6 +94,22 @@ body {
 	margin: 0;
 	padding: 0;
 }
+/* Titre décoratif (Portfolio, références, synergie) */
+.rz-display-title {
+	margin: 0 auto;
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	font-family: "Playfair Display", Georgia, serif;
+	font-style: italic;
+	font-weight: 600;
+	font-size: clamp(4.5rem, 14vw, 11rem);
+	line-height: 0.95;
+	letter-spacing: -0.02em;
+	color: #3a444f;
+	text-align: center;
+	white-space: nowrap;
+}
 #RZ_RECHERCH .rz-block-title-serif,
 #RZ_RECHERCH #rz-recherche-heading {
 	margin: 0 auto;
@@ -61,7 +119,7 @@ body {
 	font-family: "Playfair Display", Georgia, serif;
 	font-style: italic;
 	font-weight: 600;
-	font-size: clamp(4.5rem, 14vw, 11rem);
+	font-size: clamp(2.5rem, 9vw, 6.5rem);
 	line-height: 0.95;
 	letter-spacing: -0.02em;
 	color: #3a444f;
